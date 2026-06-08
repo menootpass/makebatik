@@ -10,7 +10,8 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }) {
-  const product = PRODUCTS.find((p) => p.slug === params.slug);
+  const { slug } = await params;
+  const product = PRODUCTS.find((p) => p.slug === slug);
 
   if (!product) {
     return {
@@ -25,8 +26,8 @@ export async function generateMetadata({ params }) {
   };
 }
 
-export default function ProductDetailPage({ params }) {
-  const { slug } = params;
+export default async function ProductDetailPage({ params }) {
+  const { slug } = await params;
   const product = PRODUCTS.find((p) => p.slug === slug);
 
   if (!product) {
