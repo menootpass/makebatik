@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useCart } from "../context/CartContext";
 import { formatRupiah } from "../lib/format";
 
@@ -14,12 +15,13 @@ export default function ProductCard({ product }) {
       name: product.name,
       price: product.price,
       image: product.image,
-      variant: product.variant,
+      variant: product.variant?.[0] || product.variant,
     });
   };
 
   return (
-    <div className="group border-r border-b border-primary bg-surface hover:bg-[#F9F9F9] transition-colors duration-500 flex flex-col relative border-grid-item">
+    <Link href={`/produk/${product.slug}`}>
+      <div className="group border-r border-b border-primary bg-surface hover:bg-[#F9F9F9] transition-colors duration-500 flex flex-col relative border-grid-item cursor-pointer">
       <div className="aspect-[3/4] border-b border-primary overflow-hidden relative bg-surface-container-low">
         <img
           src={product.image}
@@ -63,5 +65,6 @@ export default function ProductCard({ product }) {
         </button>
       </div>
     </div>
+    </Link>
   );
 }
