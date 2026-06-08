@@ -4,11 +4,14 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { useCart } from '../context/CartContext';
 import { formatRupiah } from '../lib/format';
+import { PRODUCTS } from '../data/products';
 
 export default function ProductDetailContent({ product }) {
   const { addToCart } = useCart();
   const [selectedVariant, setSelectedVariant] = useState(product?.variant?.[0] || '');
   const [quantity, setQuantity] = useState(1);
+  const [selectedImageIdx, setSelectedImageIdx] = useState(0);
+  const [addedToCart, setAddedToCart] = useState(false);
 
   const handleAddToCart = () => {
     addToCart({
@@ -19,18 +22,23 @@ export default function ProductDetailContent({ product }) {
       variant: selectedVariant,
       quantity,
     });
+    setAddedToCart(true);
+    setTimeout(() => setAddedToCart(false), 2000);
   };
 
   const handleQuantityChange = (change) => {
     setQuantity(Math.max(1, quantity + change));
   };
 
+  const currentImage = product?.gallery?.[selectedImageIdx] || product?.image;
+  const relatedProducts = PRODUCTS.filter((p) => p.id !== product.id).slice(0, 3);
+
   return (
-    <article className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop pt-16 pb-section-gap">
+    <article className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop pt-6 md:pt-16 pb-12 md:pb-section-gap">
       {/* Breadcrumb */}
       <Link
         href="/products"
-        className="inline-flex items-center gap-2 font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors uppercase tracking-widest mb-12 group"
+        className="inline-flex items-center gap-2 font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors uppercase tracking-widest mb-8 md:mb-12 group"
       >
         <span className="material-symbols-outlined text-[18px] transform group-hover:-translate-x-1 transition-transform">
           arrow_back
@@ -39,25 +47,30 @@ export default function ProductDetailContent({ product }) {
       </Link>
 
       {/* Main Product Section - Two Column Layout */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-12 mb-12 md:mb-16">
         {/* Left: Product Images */}
-        <div className="flex flex-col gap-6">
+        <div className="flex flex-col gap-4 md:gap-6">
           {/* Main Image */}
-          <div className="w-full aspect-[3/4] border border-primary overflow-hidden bg-surface-container-low">
+          <div className="w-full aspect-[3/4] border border-primary overflow-hidden bg-surface-container-low group cursor-zoom-in">
             <img
-              src={product.image}
+              src={currentImage}
               alt={product.name}
-              className="w-full h-full object-cover object-center"
+              className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
             />
           </div>
 
-          {/* Image Gallery Thumbnails (if multiple images exist) */}
+          {/* Image Gallery Thumbnails */}
           {product.gallery && product.gallery.length > 1 && (
-            <div className="grid grid-cols-4 gap-3">
+            <div className="grid grid-cols-4 gap-2 md:gap-3">
               {product.gallery.map((img, idx) => (
                 <button
                   key={idx}
-                  className="aspect-[3/4] border border-primary overflow-hidden hover:opacity-75 transition-opacity"
+                  onClick={() => setSelectedImageIdx(idx)}
+                  className={`aspect-[3/4] border overflow-hidden transition-all ${
+                    selectedImageIdx === idx
+                      ? 'border-tertiary-container border-2'
+                      : 'border-primary hover:border-tertiary-container'
+                  }`}
                 >
                   <img src={img} alt={`View ${idx + 1}`} className="w-full h-full object-cover" />
                 </button>
@@ -67,12 +80,12 @@ export default function ProductDetailContent({ product }) {
         </div>
 
         {/* Right: Product Details */}
-        <div className="flex flex-col">
+        <div className="flex flex-col gap-6 md:gap-8">
           {/* Badge */}
           {product.badge && (
-            <div className="inline-flex w-fit mb-6">
+            <div className="inline-flex w-fit">
               <div
-                className={`border border-primary px-3 py-1 font-label-caps text-label-caps text-[10px] ${
+                className={`border border-primary px-4 py-2 font-label-caps text-label-caps text-[11px] tracking-widest ${
                   product.badge === 'Limited Edition'
                     ? 'bg-primary text-on-primary'
                     : 'bg-surface text-primary'
@@ -83,71 +96,77 @@ export default function ProductDetailContent({ product }) {
             </div>
           )}
 
-          {/* Product Name & Price */}
-          <h1 className="font-headline-lg text-headline-lg text-primary mb-2 leading-tight">
-            {product.name}
-          </h1>
-          <p className="font-headline-md text-headline-md text-tertiary-container mb-8">
-            {formatRupiah(product.price)}
-          </p>
-
-          {/* Description */}
-          <p className="font-body-md text-body-md text-on-surface-variant leading-relaxed mb-8 pb-8 border-b border-outline-variant">
-            {product.description}
-          </p>
-
-          {/* Material Info */}
-          <div className="mb-8 pb-8 border-b border-outline-variant">
-            <h3 className="font-body-lg text-body-lg text-primary font-semibold mb-3">
-              Material
-            </h3>
-            <p className="font-body-md text-body-md text-on-surface-variant">
-              {product.material}
+          {/* Title & Price */}
+          <div>
+            <h1 className="font-headline-lg text-headline-lg md:text-headline-xl mb-3 md:mb-4 text-balance">
+              {product.name}
+            </h1>
+            <p className="font-body-lg text-body-lg text-tertiary">
+              {formatRupiah(product.price)}
             </p>
           </div>
 
-          {/* Variant Selection */}
-          {product.variant && product.variant.length > 1 && (
-            <div className="mb-8 pb-8 border-b border-outline-variant">
-              <h3 className="font-body-lg text-body-lg text-primary font-semibold mb-4">
-                Ukuran
-              </h3>
-              <div className="flex flex-wrap gap-3">
-                {product.variant.map((size) => (
-                  <button
-                    key={size}
-                    onClick={() => setSelectedVariant(size)}
-                    className={`px-6 py-3 border font-label-caps text-label-caps transition-all ${
-                      selectedVariant === size
-                        ? 'bg-primary text-on-primary border-primary'
-                        : 'border-outline-variant text-primary hover:border-primary'
-                    }`}
-                  >
-                    {size}
-                  </button>
-                ))}
-              </div>
+          {/* Description */}
+          {product.description && (
+            <div className="py-4 md:py-6 border-y border-primary">
+              <p className="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                {product.description}
+              </p>
             </div>
           )}
 
-          {/* Quantity & Add to Cart */}
-          <div className="mb-8 pb-8 border-b border-outline-variant">
-            <h3 className="font-body-lg text-body-lg text-primary font-semibold mb-4">
-              Jumlah
-            </h3>
-            <div className="flex items-center gap-4">
+          {/* Material Info */}
+          {product.material && (
+            <div className="space-y-2">
+              <p className="font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant">
+                Material
+              </p>
+              <p className="font-body-md text-body-md">
+                {product.material}
+              </p>
+            </div>
+          )}
+
+          {/* Size Selection */}
+          <div className="space-y-3">
+            <label className="font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant block">
+              Ukuran / Variant
+            </label>
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-2 gap-2 md:gap-3">
+              {product.variant?.map((variant) => (
+                <button
+                  key={variant}
+                  onClick={() => setSelectedVariant(variant)}
+                  className={`py-3 px-4 border transition-all font-body-md text-body-md ${
+                    selectedVariant === variant
+                      ? 'bg-primary text-on-primary border-primary'
+                      : 'bg-surface border-primary text-on-surface hover:bg-surface-container'
+                  }`}
+                >
+                  {variant}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Quantity Selection */}
+          <div className="space-y-3">
+            <label className="font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant block">
+              Kuantitas
+            </label>
+            <div className="flex items-center border border-primary w-fit">
               <button
                 onClick={() => handleQuantityChange(-1)}
-                className="w-12 h-12 border border-primary flex items-center justify-center hover:bg-primary hover:text-on-primary transition-colors"
+                className="px-4 py-2 hover:bg-surface-container transition-colors"
               >
                 <span className="material-symbols-outlined">remove</span>
               </button>
-              <span className="font-headline-md text-headline-md text-primary min-w-8 text-center">
+              <div className="px-6 py-2 min-w-16 text-center font-body-md text-body-md">
                 {quantity}
-              </span>
+              </div>
               <button
                 onClick={() => handleQuantityChange(1)}
-                className="w-12 h-12 border border-primary flex items-center justify-center hover:bg-primary hover:text-on-primary transition-colors"
+                className="px-4 py-2 hover:bg-surface-container transition-colors"
               >
                 <span className="material-symbols-outlined">add</span>
               </button>
@@ -157,37 +176,36 @@ export default function ProductDetailContent({ product }) {
           {/* Add to Cart Button */}
           <button
             onClick={handleAddToCart}
-            className="w-full bg-primary text-on-primary border border-primary px-8 py-4 font-label-caps text-label-caps uppercase tracking-widest hover:bg-transparent hover:text-primary transition-all duration-300 mb-6 flex items-center justify-center gap-3"
+            className={`w-full py-4 px-6 border border-primary font-label-caps text-label-caps uppercase tracking-widest transition-all duration-300 ${
+              addedToCart
+                ? 'bg-primary text-on-primary'
+                : 'bg-surface text-primary hover:bg-primary hover:text-on-primary'
+            }`}
           >
-            <span className="material-symbols-outlined">shopping_bag</span>
-            Tambah ke Keranjang
+            {addedToCart ? '✓ Ditambahkan ke Keranjang' : 'Tambah ke Keranjang'}
           </button>
 
-          {/* Additional Info */}
-          <div className="space-y-4 text-sm">
+          {/* Shipping & Returns */}
+          <div className="space-y-4 pt-4 border-t border-primary">
             <div className="flex items-start gap-3">
-              <span className="material-symbols-outlined text-primary flex-shrink-0 mt-1">
-                local_shipping
-              </span>
+              <span className="material-symbols-outlined text-primary flex-shrink-0">local_shipping</span>
               <div>
-                <p className="font-body-sm text-body-sm text-primary font-semibold">
+                <p className="font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant mb-1">
                   Pengiriman Gratis
                 </p>
-                <p className="font-body-sm text-body-sm text-on-surface-variant">
+                <p className="font-body-md text-body-md text-on-surface-variant">
                   Untuk pembelian di atas Rp 500.000
                 </p>
               </div>
             </div>
             <div className="flex items-start gap-3">
-              <span className="material-symbols-outlined text-primary flex-shrink-0 mt-1">
-                verified
-              </span>
+              <span className="material-symbols-outlined text-primary flex-shrink-0">assignment_return</span>
               <div>
-                <p className="font-body-sm text-body-sm text-primary font-semibold">
-                  Autentik 100%
+                <p className="font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant mb-1">
+                  Pengembalian 30 Hari
                 </p>
-                <p className="font-body-sm text-body-sm text-on-surface-variant">
-                  Setiap produk adalah karya asli Make Batik
+                <p className="font-body-md text-body-md text-on-surface-variant">
+                  Pengembalian gratis untuk semua pesanan
                 </p>
               </div>
             </div>
@@ -195,60 +213,71 @@ export default function ProductDetailContent({ product }) {
         </div>
       </div>
 
-      {/* Care Instructions Section */}
-      <section className="mb-16 pb-16 border-t border-primary pt-16">
-        <h2 className="font-headline-md text-headline-md text-primary mb-8">
-          Panduan Perawatan
+      {/* Care Instructions */}
+      {product.care && product.care.length > 0 && (
+        <section className="mb-16 py-8 md:py-12 border-t border-b border-primary">
+          <h2 className="font-headline-md text-headline-md md:text-headline-lg mb-6 md:mb-8">
+            Perawatan Produk
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+            {product.care.map((instruction, idx) => (
+              <div key={idx} className="flex gap-4">
+                <span className="material-symbols-outlined text-tertiary flex-shrink-0 mt-1">
+                  {idx === 0 ? 'water_drop' : idx === 1 ? 'do_not_disturb' : idx === 2 ? 'light_mode' : 'local_fire_department'}
+                </span>
+                <p className="font-body-md text-body-md text-on-surface-variant">
+                  {instruction}
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* Product Story / Additional Info */}
+      <section className="mb-16 py-8 md:py-12">
+        <h2 className="font-headline-md text-headline-md md:text-headline-lg mb-6 md:mb-8">
+          Kisah di Balik Produk
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div>
-            <h3 className="font-body-lg text-body-lg text-primary font-semibold mb-4">
-              Instruksi Pencucian
-            </h3>
-            <ul className="space-y-3">
-              {product.care.map((instruction, idx) => (
-                <li key={idx} className="flex gap-3">
-                  <span className="text-tertiary-container font-bold flex-shrink-0">•</span>
-                  <span className="font-body-md text-body-md text-on-surface-variant">
-                    {instruction}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="bg-surface-container-low border border-outline-variant p-6">
-            <h3 className="font-body-lg text-body-lg text-primary font-semibold mb-3">
-              Tips Penyimpanan
-            </h3>
-            <p className="font-body-md text-body-md text-on-surface-variant leading-relaxed">
-              Simpan dalam lemari yang sejuk dan kering. Hindari sinar matahari langsung yang
-              dapat memudarkan warna. Gunakan kayu putih atau rempah alami untuk menolak
-              serangga, bukan kamper kimia yang dapat merusak serat.
-            </p>
-          </div>
+        <div className="space-y-4 md:space-y-6">
+          <p className="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+            Setiap batik adalah karya seni yang dibuat dengan kesabaran dan keahlian turun-temurun. Produk kami menggunakan teknik tradisional yang telah diwariskan selama berabad-abad, namun dikombinasikan dengan desain kontemporer untuk memenuhi selera modern.
+          </p>
+          <p className="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+            Kami berkomitmen untuk menjaga kelestarian batik tradisional Indonesia dengan mendukung pengrajin lokal dan menggunakan bahan-bahan berkualitas premium. Setiap pembelian Anda membantu melestarikan warisan budaya Indonesia yang berharga.
+          </p>
         </div>
       </section>
 
-      {/* Related Products / CTA */}
-      <section className="pt-16 border-t border-primary">
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6">
-          <div>
-            <h2 className="font-headline-md text-headline-md text-primary mb-2">
-              Jelajahi Koleksi Lainnya
-            </h2>
-            <p className="font-body-md text-body-md text-on-surface-variant">
-              Temukan lebih banyak mahakarya batik kami yang eksklusif
-            </p>
+      {/* Related Products */}
+      {relatedProducts.length > 0 && (
+        <section className="py-8 md:py-12 border-t border-primary">
+          <h2 className="font-headline-md text-headline-md md:text-headline-lg mb-8 md:mb-12">
+            Produk Lainnya
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+            {relatedProducts.map((relatedProduct) => (
+              <Link key={relatedProduct.id} href={`/produk/${relatedProduct.slug}`}>
+                <div className="group">
+                  <div className="w-full aspect-[3/4] overflow-hidden bg-surface-container-low mb-4">
+                    <img
+                      src={relatedProduct.image}
+                      alt={relatedProduct.name}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                  <h3 className="font-body-lg text-body-lg mb-2 group-hover:text-tertiary transition-colors">
+                    {relatedProduct.name}
+                  </h3>
+                  <p className="font-label-caps text-label-caps text-tertiary">
+                    {formatRupiah(relatedProduct.price)}
+                  </p>
+                </div>
+              </Link>
+            ))}
           </div>
-          <Link
-            href="/products"
-            className="px-8 py-3 bg-primary text-on-primary border border-primary font-label-caps text-label-caps uppercase tracking-widest hover:bg-transparent hover:text-primary transition-all duration-300 flex items-center gap-2"
-          >
-            Lihat Semua Produk
-            <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
-          </Link>
-        </div>
-      </section>
+        </section>
+      )}
     </article>
   );
 }

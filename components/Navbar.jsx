@@ -11,10 +11,9 @@ const NAV_LINKS = [
   { href: "/products", label: "Produk" },
   { href: "/filosofi", label: "Filosofi" },
   { href: "/edukasi", label: "Edukasi" },
-  { href: "/faq", label: "Hubungi Kami" },
 ];
 
-function NavLink({ href, label, active }) {
+function NavLink({ href, label, active, onClick }) {
   const base =
     "font-label-caps text-label-caps uppercase transition-colors duration-300";
   const activeClass =
@@ -22,7 +21,7 @@ function NavLink({ href, label, active }) {
   const inactiveClass = "text-on-surface-variant hover:text-primary";
 
   return (
-    <Link href={href} className={`${base} ${active ? activeClass : inactiveClass}`}>
+    <Link href={href} onClick={onClick} className={`${base} ${active ? activeClass : inactiveClass}`}>
       {label}
     </Link>
   );
@@ -32,6 +31,7 @@ export default function Navbar({ variant = "default" }) {
   const pathname = usePathname();
   const { openCart, getTotalItems } = useCart();
   const [scrolled, setScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const count = getTotalItems();
 
   useEffect(() => {
@@ -48,20 +48,26 @@ export default function Navbar({ variant = "default" }) {
   const borderClass =
     variant === "home" ? "border-surface-variant" : "border-primary";
 
+  const handleNavClick = () => {
+    setMobileMenuOpen(false);
+  };
+
   return (
     <nav
       className={`w-full top-0 sticky bg-surface z-40 transition-all duration-300 border-b ${borderClass} ${
         scrolled ? "shadow-sm bg-opacity-95 backdrop-blur-md" : ""
       }`}
     >
-      <div className="flex justify-between items-center h-20 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+      <div className="flex justify-between items-center h-16 md:h-20 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+        {/* Logo */}
         <Link
           href="/"
-          className="font-headline-md text-headline-md text-primary tracking-tight flex items-center gap-4"
+          className="font-headline-md text-headline-md text-primary tracking-tight text-sm md:text-base"
         >
           Make Batik.
         </Link>
 
+        {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-8">
           {NAV_LINKS.map((link) => (
             <NavLink
@@ -73,22 +79,54 @@ export default function Navbar({ variant = "default" }) {
           ))}
         </div>
 
-        <button
-          type="button"
-          onClick={openCart}
-          aria-label="Cart"
-          className="text-primary hover:text-tertiary-container transition-colors duration-300 relative group"
-        >
-          <span className="material-symbols-outlined group-hover:scale-110 transition-transform">
-            shopping_cart
-          </span>
-          {count > 0 && (
-            <span className="absolute -top-1 -right-2 bg-primary text-on-primary font-label-caps text-[9px] w-4 h-4 flex items-center justify-center border border-primary">
-              {count}
+        {/* Right Section: Cart & Mobile Menu Toggle */}
+        <div className="flex items-center gap-4 md:gap-6">
+          <button
+            type="button"
+            onClick={openCart}
+            aria-label="Cart"
+            className="text-primary hover:text-tertiary-container transition-colors duration-300 relative group"
+          >
+            <span className="material-symbols-outlined group-hover:scale-110 transition-transform">
+              shopping_cart
             </span>
-          )}
-        </button>
+            {count > 0 && (
+              <span className="absolute -top-2 -right-2 bg-primary text-on-primary font-label-caps text-[9px] w-5 h-5 flex items-center justify-center border border-primary rounded-full">
+                {count}
+              </span>
+            )}
+          </button>
+
+          {/* Mobile Menu Toggle */}
+          <button
+            type="button"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Menu"
+            className="md:hidden text-primary hover:text-tertiary-container transition-colors"
+          >
+            <span className="material-symbols-outlined">
+              {mobileMenuOpen ? "close" : "menu"}
+            </span>
+          </button>
+        </div>
       </div>
+
+      {/* Mobile Navigation Menu */}
+      {mobileMenuOpen && (
+        <div className="md:hidden border-t border-primary bg-surface">
+          <div className="flex flex-col px-margin-mobile py-6 gap-4">
+            {NAV_LINKS.map((link) => (
+              <NavLink
+                key={link.label + link.href}
+                href={link.href}
+                label={link.label}
+                active={isActive(link.href)}
+                onClick={handleNavClick}
+              />
+            ))}
+          </div>
+        </div>
+      )}
     </nav>
   );
 }
