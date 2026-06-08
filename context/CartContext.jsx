@@ -15,6 +15,8 @@ export function CartProvider({ children }) {
   const [successData, setSuccessData] = useState(null);
   const [toast, setToast] = useState({ visible: false, name: "" });
   const [hydrated, setHydrated] = useState(false);
+  const [isProcessing, setIsProcessing] = useState(false);
+  const [checkoutError, setCheckoutError] = useState(null);
 
   useEffect(() => {
     try {
@@ -101,24 +103,76 @@ export function CartProvider({ children }) {
   const closeCheckout = useCallback(() => setCheckoutOpen(false), []);
 
   const submitOrder = useCallback(
-    async ({ name, email, phone, address }) => {
-      if (cart.length === 0) throw new Error("Keranjang kosong.");
-      const orderId = "MB-" + Date.now();
-      const total = getTotal();
-      const items = cart.map((i) => ({
-        id: i.id,
-        name: i.name,
-        price: i.price,
-        quantity: i.qty,
-      }));
+    async ({ name, email, phone, address, city, postalCode }) => {
+      try {
+        setIsProcessing(true);
+        setCheckoutError(null);
 
-      await new Promise((r) => setTimeout(r, 600));
+        if (cart.length === 0) {
+          throw new Error("Keranjang kosong.");
+        }
 
-      setCheckoutOpen(false);
-      setSuccessData({ orderId, total, name, email, items });
-      setSuccessOpen(true);
+        // Create transaction via Midtrans
+        const response = await fetch('/api/midtrans/create-transaction', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            cartItems: cart,
+            customerData: {
+              name,
+              email,
+              phone,
+              address,
+              city,
+              postalCode,
+            },
+          }),
+        });
+
+        if (!response.ok) {
+          const error = await response.json();
+          throw new Error(error.error || 'Gagal membuat transaksi');
+        }
+
+        const { token, order_id } = await response.json();
+
+        // Store order data in sessionStorage for success page
+        sessionStorage.setItem('lastOrderId', order_id);
+        sessionStorage.setItem('lastOrderData', JSON.stringify({
+          orderId: order_id,
+          name,
+          email,
+          total: getTotal(),
+          items: cart,
+        }));
+
+        // Redirect to Midtrans payment page
+        if (typeof window !== 'undefined') {
+          window.snap.pay(token, {
+            onSuccess: () => {
+              setCheckoutOpen(false);
+              clearCart();
+            },
+            onPending: () => {
+              setCheckoutOpen(false);
+            },
+            onError: (result) => {
+              setCheckoutError('Pembayaran gagal. Silakan coba lagi.');
+              console.error('[v0] Payment error:', result);
+            },
+            onClose: () => {
+              console.log('[v0] Payment modal closed');
+            },
+          });
+        }
+      } catch (error) {
+        setCheckoutError(error.message || 'Terjadi kesalahan saat memproses pesanan');
+        console.error('[v0] Order submission error:', error);
+      } finally {
+        setIsProcessing(false);
+      }
     },
-    [cart, getTotal]
+    [cart, getTotal, clearCart]
   );
 
   const closeSuccess = useCallback(() => {
@@ -156,6 +210,8 @@ export function CartProvider({ children }) {
         successOpen,
         successData,
         toast,
+        isProcessing,
+        checkoutError,
         addToCart,
         removeFromCart,
         updateQty,
@@ -169,6 +225,7 @@ export function CartProvider({ children }) {
         closeCheckout,
         submitOrder,
         closeSuccess,
+        setCheckoutError,
       }}
     >
       {children}
