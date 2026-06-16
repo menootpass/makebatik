@@ -25,26 +25,16 @@ export default function ProductCard({ product }) {
     <Link href={`/produk/${slug}`}>
       <div className="group border-r border-b border-primary bg-surface hover:bg-[#F9F9F9] transition-colors duration-500 flex flex-col relative border-grid-item cursor-pointer">
         <div
-          className="border-b border-primary overflow-hidden relative"
+          className="border-b border-primary overflow-hidden relative bg-surface-container-low"
           style={{
             aspectRatio: "3 / 4",
+            backgroundImage: `url('${product.image}')`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
             backgroundColor: "#f5f3f3",
           }}
         >
-          <img
-            src={product.image}
-            alt={product.name}
-            loading="eager"
-            style={{
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
-              objectPosition: "center",
-              display: "block",
-              transition: "transform 700ms ease-out",
-            }}
-            className="group-hover:scale-105"
-          />
           <div className="absolute inset-0 bg-primary bg-opacity-0 group-hover:bg-opacity-5 transition-all duration-300 flex items-center justify-center backdrop-blur-[0px] group-hover:backdrop-blur-[2px]">
             <button
               type="button"
