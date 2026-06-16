@@ -25,7 +25,7 @@ export default function ProductCard({ product }) {
     <Link href={`/produk/${slug}`}>
       <div className="group border-r border-b border-primary bg-surface hover:bg-[#F9F9F9] transition-colors duration-500 flex flex-col relative border-grid-item cursor-pointer">
         <div
-          className="border-b border-primary overflow-hidden relative bg-surface-container-low"
+          className="border-b border-primary overflow-hidden relative bg-surface-container-low flex items-center justify-center"
           style={{
             aspectRatio: "3 / 4",
             backgroundImage: `url('${product.image}')`,
@@ -35,18 +35,16 @@ export default function ProductCard({ product }) {
             backgroundColor: "#f5f3f3",
           }}
         >
-          <div className="absolute inset-0 bg-primary bg-opacity-0 group-hover:bg-opacity-5 transition-all duration-300 flex items-center justify-center backdrop-blur-[0px] group-hover:backdrop-blur-[2px]">
-            <button
-              type="button"
-              className="opacity-0 group-hover:opacity-100 bg-surface text-primary border border-primary px-8 py-3 font-label-caps text-label-caps transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 hover:bg-primary hover:text-on-primary"
-              onClick={(e) => {
-                e.preventDefault();
-                e.stopPropagation();
-              }}
-            >
-              View Product
-            </button>
-          </div>
+          <button
+            type="button"
+            className="opacity-0 group-hover:opacity-100 bg-surface text-primary border border-primary px-8 py-3 font-label-caps text-label-caps transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 hover:bg-primary hover:text-on-primary"
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+            }}
+          >
+            View Product
+          </button>
           {product.badge && (
             <div
               className={`absolute top-4 left-4 border border-primary px-3 py-1 font-label-caps text-label-caps text-[10px] ${
