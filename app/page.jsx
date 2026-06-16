@@ -74,7 +74,7 @@ export default function HomePage() {
           </h1>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mt-12">
             <Link
-              href="/products"
+              href="/produk"
               className="px-8 py-4 bg-on-primary text-primary font-label-caps text-label-caps uppercase border border-on-primary hover:bg-transparent hover:text-on-primary transition-all duration-300 w-full sm:w-auto"
             >
               Explore Collection
@@ -98,7 +98,7 @@ export default function HomePage() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-12 gap-gutter auto-rows-[300px] md:auto-rows-[400px]">
           <Link
-            href="/products"
+            href="/produk"
             className="group relative block md:col-span-8 row-span-1 overflow-hidden border border-surface-variant fade-up bg-surface"
           >
             <img
@@ -147,7 +147,7 @@ export default function HomePage() {
             </div>
           </div>
           <Link
-            href="/products"
+            href="/produk"
             className="group relative block md:col-span-8 row-span-1 overflow-hidden border border-surface-variant fade-up bg-surface"
           >
             <img
