@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { useCart } from "../context/CartContext";
 import { formatRupiah } from "../lib/format";
-import Image from "next/image";
 
 export default function ProductCard({ product }) {
   const { addToCart } = useCart();
@@ -25,11 +24,26 @@ export default function ProductCard({ product }) {
   return (
     <Link href={`/produk/${slug}`}>
       <div className="group border-r border-b border-primary bg-surface hover:bg-[#F9F9F9] transition-colors duration-500 flex flex-col relative border-grid-item cursor-pointer">
-        <div className="aspect-[3/4] border-b border-primary overflow-hidden relative bg-surface-container-low">
-          <Image
+        <div
+          className="border-b border-primary overflow-hidden relative"
+          style={{
+            aspectRatio: "3 / 4",
+            backgroundColor: "#f5f3f3",
+          }}
+        >
+          <img
             src={product.image}
             alt={product.name}
-            className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+            loading="eager"
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              objectPosition: "center",
+              display: "block",
+              transition: "transform 700ms ease-out",
+            }}
+            className="group-hover:scale-105"
           />
           <div className="absolute inset-0 bg-primary bg-opacity-0 group-hover:bg-opacity-5 transition-all duration-300 flex items-center justify-center backdrop-blur-[0px] group-hover:backdrop-blur-[2px]">
             <button
