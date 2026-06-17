@@ -59,10 +59,11 @@ export default function CheckoutModal() {
         total: getTotal(),
       });
       await submitOrder({ name, email, phone, address });
+      // Redirect will happen from submitOrder, no need to set loading to false
     } catch (err) {
       console.error("[v0] Checkout error:", err);
-      setError(err.message || "Terjadi kesalahan saat memproses pembayaran. Silakan coba lagi.");
-    } finally {
+      const errorMsg = err?.message || err?.toString() || "Terjadi kesalahan saat memproses pembayaran";
+      setError(errorMsg.includes("401") ? "Kredensial Midtrans tidak valid" : errorMsg);
       setLoading(false);
     }
   };

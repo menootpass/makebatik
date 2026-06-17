@@ -114,6 +114,12 @@ export function CartProvider({ children }) {
       }));
 
       try {
+        console.log("[v0] Calling payment/create endpoint...");
+        
+        // Create abort controller untuk timeout
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 30000); // 30 detik timeout
+        
         // Call API untuk membuat transaksi Midtrans
         const response = await fetch("/api/payment/create", {
           method: "POST",
@@ -127,13 +133,46 @@ export function CartProvider({ children }) {
             address,
             items,
           }),
+          signal: controller.signal,
         });
 
-        const data = await response.json();
+        clearTimeout(timeoutId);
+        
+        let data;
+        try {
+          data = await response.json();
+        } catch (parseError) {
+          console.error("[v0] Failed to parse response:", parseError);
+          throw new Error("Server mengembalikan response yang tidak valid");
+        }
 
         if (!response.ok) {
-          throw new Error(data.error || "Gagal membuat transaksi");
+          const errorMsg = data?.error || data?.message || `HTTP ${response.status}`;
+          console.error("[v0] API error:", data);
+          throw new Error(errorMsg);
         }
+
+        // Redirect ke Midtrans payment page
+        if (data.redirect_url) {
+          console.log("[v0] Storing order data and redirecting to Midtrans...");
+          // Store order data sebelum redirect
+          localStorage.setItem(
+            "pending_order",
+            JSON.stringify({ orderId, total, name, email, items })
+          );
+          // Give localStorage time to persist
+          await new Promise(resolve => setTimeout(resolve, 100));
+          window.location.href = data.redirect_url;
+        } else {
+          throw new Error("Midtrans tidak mengembalikan URL pembayaran");
+        }
+      } catch (error) {
+        console.error("[v0] Submit order error:", error);
+        if (error.name === "AbortError") {
+          throw new Error("Request timeout - server tidak merespons. Coba lagi.");
+        }
+        throw error;
+      }
 
         // Redirect ke Midtrans payment page
         if (data.redirect_url) {
