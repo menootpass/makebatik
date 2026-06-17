@@ -173,7 +173,7 @@ export function CartProvider({ children }) {
         }
         throw error;
       }
-
+      try{
         // Redirect ke Midtrans payment page
         if (data.redirect_url) {
           // Store order data sebelum redirect
