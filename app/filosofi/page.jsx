@@ -1,136 +1,274 @@
 import AppShell from "../../components/AppShell";
-import Image from "next/image";
-const MOTIFS = [
+
+export const metadata = {
+  title: "Filosofi - Make Batik | Wear Art Save Earth",
+  description: "Filosofi Make Batik: Menenun Tradisi, Merawat Bumi",
+};
+
+const PILLARS = [
   {
-    image: "/images/kawung.png",
-    name: "Kawung",
-    desc: "Representing a cross-section of a palm fruit, this ancient geometric pattern symbolizes purity, perfection, and the origin of life.",
+    icon: "🎨",
+    title: "Inovasi Berakar Budaya",
+    desc: "Kami menjaga napas tradisi batik agar tetap hidup dalam keseharian masyarakat modern melalui produk milineris yang trendi, fungsional, dan relevan dengan perkembangan zaman.",
+    image: "/images/inovasi-budaya.png",
   },
   {
-    image: "/images/parang.png",
-    name: "Parang",
-    desc: "The S-shaped diagonal lines mimic ocean waves, conveying a message of continuous effort, unwavering strength, and the spirit of a warrior.",
+    icon: "🌿",
+    title: "Berorientasi Lingkungan",
+    desc: "Kami menolak konsep bahwa limbah adalah akhir dari sebuah material. Melalui kreativitas, kami memanfaatkan kembali material alternatif dari limbah kerja semen dan plastik daur ulang.",
+    image: "/images/lingkungan-berkelanjutan.png",
   },
   {
-    image: "/images/megamendung.png",
-    name: "Megamendung",
-    desc: "Depicting rain clouds, this motif from Cirebon signifies patience, cool-headedness in anger, and the bringing of life-giving rain.",
+    icon: "🤝",
+    title: "Ekosistem Berkelanjutan",
+    desc: "Setiap produk Make Batik merupakan representasi dari kepedulian sosial, pemberdayaan komunitas pengrajin lokal, dan tata kelola industri kreatif yang bertanggung jawab.",
+    image: "/images/ekosistem-komunitas.png",
   },
 ];
 
-export const metadata = {
-  title: "Philosophy - Make Batik",
-};
+const JOURNEY_PHASES = [
+  {
+    phase: "Fase Market Entry",
+    date: "September 2025",
+    description: "Kami memulai langkah pertama di industri digital secara agresif. Kehadiran perdana lini produk Hand Bag disambut antusias oleh generasi muda.",
+    milestone: "🚀 Peluncuran Pertama",
+  },
+  {
+    phase: "Fase Membangun Kedekatan",
+    date: "Oktober - November 2025",
+    description: "Perjalanan berlanjut dengan tumbuhnya komunitas organik dan engagement yang semakin mendalam dengan audiens kami.",
+    milestone: "📈 Pertumbuhan Konsisten",
+  },
+];
 
 export default function FilosofiPage() {
   return (
     <AppShell>
-      <section className="py-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto text-center flex flex-col items-center">
-        <span className="font-label-caps text-label-caps text-on-surface-variant mb-6 uppercase tracking-widest">
-          Our Heritage
+      {/* Hero Section */}
+      <section className="py-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto text-center flex flex-col items-center border-b border-primary">
+        <span className="font-label-caps text-label-caps text-tertiary-container mb-4 uppercase tracking-widest">
+          WEAR ART SAVE EARTH
         </span>
-        <h1 className="font-headline-xl-mobile text-headline-xl-mobile md:font-headline-xl md:text-headline-xl text-primary max-w-4xl mb-12">
-          The Soul Woven Into Every Thread
+        <h1 className="font-headline-xl-mobile text-headline-xl-mobile md:font-headline-xl md:text-headline-xl text-primary max-w-4xl mb-6">
+          Filosofi Kami: Menenun Tradisi, Merawat Bumi
         </h1>
-        <div className="w-full aspect-[21/9] bg-surface-container border border-primary overflow-hidden">
+        <p className="font-body-lg text-body-lg text-on-surface-variant max-w-3xl mb-12">
+          Make Batik bukan sekadar sebuah produk fesyen, melainkan sebuah gerakan kreatif yang membawa nilai-nilai lokal menuju ranah yang lebih luas dan berkelanjutan. Kami membuktikan bahwa limbah bisa bertransformasi menjadi karya bernilai estetika tinggi jika diolah dengan kreativitas dan kepedulian.
+        </p>
+        <div className="w-full aspect-[2/1] bg-surface-container border border-primary overflow-hidden rounded-lg shadow-lg">
           <img
-            alt="Batik pattern close up"
-            className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000"
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPlbqxF9xF5kkI07CujN2x4ydExGp9BDk0tfNc5M-KicxBdoTF8hF3KemWvZnR1F9UMv9ebysYI_xSrfde0cdLogU1jqSpbR52ijRSx12lGA9SgYUhSKcmXxaIUTvJAO-nY-7FH608gL1rKh3C8Llj5rg3itdUEYFjC4WIVLuGGO29ZNFuQbWJcGpTzTn1IdK4thnQgX8PRD5qUem7LN4USgl5DVIRjRO9frWUe62NGmyDy-F1SdCXHs6Q3b_qUXkoIkknaruZ6TXF"
+            alt="Make Batik Philosophy - Heritage and Sustainability"
+            className="w-full h-full object-cover"
+            src="/images/filosofi-hero.png"
           />
         </div>
       </section>
 
-      <section className="py-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-12 gap-gutter items-center">
-        <div className="md:col-span-5 flex flex-col space-y-8 pr-0 md:pr-12">
-          <h2 className="font-headline-lg text-headline-lg text-primary">More Than A Garment</h2>
-          <p className="font-body-md text-body-md text-on-surface-variant leading-relaxed">
-            Batik is an ancient art form passed down through generations. It is a philosophy inscribed in wax and dye, a visual language that speaks of nature, spirituality, and the human condition.
+      {/* Vision Section */}
+      <section className="py-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto bg-yellow-50 border-b border-primary">
+        <div className="max-w-3xl mx-auto text-center">
+          <h2 className="font-headline-lg text-headline-lg text-primary mb-6">Visi Kami</h2>
+          <p className="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+            Berangkat dari kegelisahan terhadap isu lingkungan dan dorongan untuk melestarikan warisan leluhur, Make Batik lahir dengan visi besar untuk menyatukan dua dunia: keindahan budaya batik dan kesadaran akan kelestarian lingkungan.
           </p>
-          <p className="font-body-md text-body-md text-on-surface-variant leading-relaxed">
-            Every dot, line, and curve holds intent. In our pursuit of &apos;Quiet Luxury&apos;, we strip away the noise to let the profound narrative of these heritage motifs resonate in a modern context.
-          </p>
-        </div>
-        <div className="md:col-span-7 grid grid-cols-2 gap-4 mt-12 md:mt-0">
-          <div className="mt-12">
-            <img
-              alt="Artisan making batik"
-              className="w-full h-auto border border-primary grayscale"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuDc3FlPRBCaKNdOgowt_62DhUpMjmDcKRGWS36cZwzzSygoX8JNbLeP18zOIncD0LnmJCYQBxQhucdJlitmw9C5RwOlS2f1D-Vv6g_GlYLwgN5WuW5gGywXkeqnsUUvHBffe2TRJT5n_UhH9dYKNujOKuKiCyFJQYjQ3Lk_-Pc_N_BSttDC44TD6qd3Tpk8UuiU1S01_Q7mLhZqlgm1zoZ3YU_m9WpNqBL-8hu_A-6darf9mktC-cGSQcVm9PE1etmQxhscAs_ykvKO"
-            />
-          </div>
-          <div>
-            <img
-              alt="Finished batik fabric"
-              className="w-full h-auto border border-primary grayscale"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZ0bsxFOqxNieP3TbLe293VhWpb3nqq0ogWMZIbh69x-2TsHo4l3U94zzBQwopu5m2qhR58FfxTwDp6Ze8vc8r99fOMTqfQH4r6Ku72kq5ZgaNGH9KyVaWzjMQGky50Mscmt3Eo2Q3309xXN54jXAtE3aR21RzilwP0wF_sCm2QH6_FINBASvEFs-PILlD-NxG8GlzzPzdAuuUHItJeVX6f3Sb51SYJbi2AuKLWFW_VM2G9iknna2m10DZzL4tn-Am4Dp9zUKcJDlX"
-            />
-          </div>
         </div>
       </section>
 
-      <section className="py-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto bg-surface-container-low border-y border-primary">
+      {/* Three Pillars Section */}
+      <section className="py-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
         <div className="text-center mb-16">
-          <h2 className="font-headline-lg text-headline-lg text-primary mb-4">The Lexicon of Motifs</h2>
-          <p className="font-body-md text-body-md text-on-surface-variant max-w-2xl mx-auto">
-            Discover the hidden meanings embedded in our signature patterns.
+          <h2 className="font-headline-lg text-headline-lg text-primary mb-4">Tiga Pilar Utama Kami</h2>
+          <p className="font-body-md text-body-md text-on-surface-variant">
+            Komitmen "Wear Art Save Earth" tertuang dalam tiga pilar yang menjadi fondasi setiap keputusan kami
           </p>
         </div>
+
         <div className="grid grid-cols-1 md:grid-cols-3 gap-gutter">
-          {MOTIFS.map((m) => (
+          {PILLARS.map((pillar, idx) => (
             <div
-              key={m.name}
-              className="border border-primary bg-surface p-6 hover:bg-[#F9F9F9] transition-colors duration-300 group"
+              key={idx}
+              className="border border-primary bg-surface flex flex-col overflow-hidden hover:shadow-lg transition-shadow duration-300"
             >
-              <div className="w-full aspect-square border-b border-primary mb-6 overflow-hidden bg-surface-container flex items-center justify-center relative">
-                
-                  <Image 
-                    src={m.image} 
-                    alt={`${m.name} Motif`} 
-                    fill
-                    className="object-contain"
-                  />
+              <div className="aspect-[4/3] bg-surface-container-low overflow-hidden border-b border-primary">
+                <img
+                  src={pillar.image}
+                  alt={pillar.title}
+                  className="w-full h-full object-cover"
+                />
               </div>
-              <h3 className="font-headline-md text-headline-md text-primary mb-2">{m.name}</h3>
-              <p className="font-body-md text-body-md text-on-surface-variant">{m.desc}</p>
+              <div className="p-6 flex flex-col flex-grow">
+                <div className="text-5xl mb-4">{pillar.icon}</div>
+                <h3 className="font-headline-md text-headline-md text-primary mb-4">
+                  {pillar.title}
+                </h3>
+                <p className="font-body-md text-body-md text-on-surface-variant leading-relaxed flex-grow">
+                  {pillar.desc}
+                </p>
+              </div>
+              <div className="h-1 bg-gradient-to-r from-primary via-tertiary-container to-primary opacity-30"></div>
             </div>
           ))}
         </div>
       </section>
 
-      <section className="py-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto flex flex-col md:flex-row items-center justify-between gap-gutter">
-        <div className="w-full md:w-1/2">
-          <h2 className="font-headline-lg text-headline-lg text-primary mb-6">
-            Cultural Significance Distribution
-          </h2>
-          <p className="font-body-md text-body-md text-on-surface-variant mb-8">
-            An analysis of our curated collection reveals the thematic focus of our pieces. We heavily emphasize motifs related to nature and spirituality, aligning with our ethos of mindful consumption and profound aesthetic value.
+      {/* Impact Numbers Section */}
+      <section className="py-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto bg-surface-container-low border-y border-primary">
+        <div className="text-center mb-16">
+          <h2 className="font-headline-lg text-headline-lg text-primary mb-4">Dampak Kami</h2>
+          <p className="font-body-md text-body-md text-on-surface-variant max-w-2xl mx-auto">
+            Setiap produk yang dibuat adalah bukti nyata dari komitmen kami terhadap keberlanjutan dan pemberdayaan komunitas
           </p>
-          <ul className="space-y-4 font-body-md text-body-md text-primary">
-            <li className="flex items-center">
-              <span className="w-4 h-4 bg-primary border border-primary mr-4 block" />
-              Nature &amp; Flora (45%)
-            </li>
-            <li className="flex items-center">
-              <span className="w-4 h-4 bg-tertiary-container border border-primary mr-4 block" />
-              Spirituality &amp; Cosmos (35%)
-            </li>
-            <li className="flex items-center">
-              <span className="w-4 h-4 bg-surface-tint border border-primary mr-4 block" />
-              Royal Hierarchy (20%)
-            </li>
-          </ul>
         </div>
-        <div className="w-full md:w-1/2 flex justify-center mt-12 md:mt-0 relative">
-          <svg className="transform -rotate-90" height="300" viewBox="0 0 32 32" width="300">
-            <circle className="text-surface-tint" cx="16" cy="16" fill="transparent" r="16" stroke="currentColor" strokeDasharray="100 100" strokeWidth="8" />
-            <circle className="text-tertiary-container" cx="16" cy="16" fill="transparent" r="16" stroke="currentColor" strokeDasharray="80 100" strokeWidth="8" />
-            <circle className="text-primary" cx="16" cy="16" fill="transparent" r="16" stroke="currentColor" strokeDasharray="45 100" strokeWidth="8" />
-          </svg>
-          <div className="absolute inset-0 flex items-center justify-center flex-col text-center">
-            <span className="font-headline-md text-headline-md text-primary block">100%</span>
-            <span className="font-label-caps text-label-caps text-on-surface-variant block">Heritage</span>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+          <div className="text-center p-8 border border-primary bg-surface">
+            <div className="text-6xl font-headline-xl text-tertiary-container mb-4">
+              100%
+            </div>
+            <h3 className="font-headline-md text-headline-md text-primary mb-2">Material Berkelanjutan</h3>
+            <p className="font-body-md text-body-md text-on-surface-variant">
+              Semua produk menggunakan limbah daur ulang dan material alternatif
+            </p>
           </div>
+
+          <div className="text-center p-8 border border-primary bg-surface">
+            <div className="text-6xl font-headline-xl text-primary mb-4">
+              ∞
+            </div>
+            <h3 className="font-headline-md text-headline-md text-primary mb-2">Jejak Karbon Minimal</h3>
+            <p className="font-body-md text-body-md text-on-surface-variant">
+              Proses produksi yang dirancang untuk meminimalkan dampak lingkungan
+            </p>
+          </div>
+
+          <div className="text-center p-8 border border-primary bg-surface">
+            <div className="text-6xl font-headline-xl text-primary mb-4">
+              🎯
+            </div>
+            <h3 className="font-headline-md text-headline-md text-primary mb-2">Pemberdayaan Komunitas</h3>
+            <p className="font-body-md text-body-md text-on-surface-variant">
+              Setiap pembelian mendukung pengrajin lokal dan industri kreatif berkelanjutan
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Journey Section */}
+      <section className="py-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+        <div className="text-center mb-16">
+          <h2 className="font-headline-lg text-headline-lg text-primary mb-4">
+            Perjalanan Kami: Menembus Batas, Divalidasi Pasar
+          </h2>
+          <p className="font-body-md text-body-md text-on-surface-variant max-w-2xl mx-auto">
+            Langkah awal Make Batik dimulai dari inisiatif sederhana yang berkembang menjadi model bisnis omnichannel yang kuat berkat penerimaan pasar yang luar biasa
+          </p>
+        </div>
+
+        <div className="space-y-8">
+          {JOURNEY_PHASES.map((phase, idx) => (
+            <div
+              key={idx}
+              className="grid grid-cols-1 md:grid-cols-12 gap-gutter items-start border-l-4 border-tertiary-container pl-8 py-4"
+            >
+              <div className="md:col-span-4">
+                <div className="flex items-baseline gap-2 mb-2">
+                  <h3 className="font-headline-md text-headline-md text-primary">
+                    {phase.phase}
+                  </h3>
+                  <span className="text-2xl">{phase.milestone}</span>
+                </div>
+                <p className="font-label-caps text-label-caps text-tertiary-container uppercase tracking-widest">
+                  {phase.date}
+                </p>
+              </div>
+              <div className="md:col-span-8">
+                <p className="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                  {phase.description}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-12 p-8 bg-yellow-50 border border-primary">
+          <img
+            src="/images/perjalanan-timeline.png"
+            alt="Make Batik Journey Timeline"
+            className="w-full h-auto"
+          />
+        </div>
+      </section>
+
+      {/* Values Grid */}
+      <section className="py-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto bg-surface-container-low border-y border-primary">
+        <div className="text-center mb-16">
+          <h2 className="font-headline-lg text-headline-lg text-primary mb-4">Nilai-Nilai Inti Kami</h2>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+          <div className="p-8 border border-primary bg-surface flex gap-6">
+            <div className="text-5xl flex-shrink-0">🏛️</div>
+            <div>
+              <h3 className="font-headline-md text-headline-md text-primary mb-3">Pelestarian Budaya</h3>
+              <p className="font-body-md text-body-md text-on-surface-variant">
+                Mempertahankan warisan batik dalam keseharian masyarakat modern dengan desain kontemporer yang relevan
+              </p>
+            </div>
+          </div>
+
+          <div className="p-8 border border-primary bg-surface flex gap-6">
+            <div className="text-5xl flex-shrink-0">♻️</div>
+            <div>
+              <h3 className="font-headline-md text-headline-md text-primary mb-3">Ekonomi Sirkular</h3>
+              <p className="font-body-md text-body-md text-on-surface-variant">
+                Mengubah limbah menjadi produk berkualitas tinggi melalui inovasi dan kreativitas tanpa henti
+              </p>
+            </div>
+          </div>
+
+          <div className="p-8 border border-primary bg-surface flex gap-6">
+            <div className="text-5xl flex-shrink-0">👥</div>
+            <div>
+              <h3 className="font-headline-md text-headline-md text-primary mb-3">Pemberdayaan Lokal</h3>
+              <p className="font-body-md text-body-md text-on-surface-variant">
+                Mendukung pengrajin dan komunitas kreatif lokal melalui peluang bisnis yang berkelanjutan
+              </p>
+            </div>
+          </div>
+
+          <div className="p-8 border border-primary bg-surface flex gap-6">
+            <div className="text-5xl flex-shrink-0">🌍</div>
+            <div>
+              <h3 className="font-headline-md text-headline-md text-primary mb-3">Tanggung Jawab Lingkungan</h3>
+              <p className="font-body-md text-body-md text-on-surface-variant">
+                Mengurangi jejak karbon dan dampak lingkungan melalui praktik bisnis yang bertanggung jawab
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Call to Action */}
+      <section className="py-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto text-center">
+        <h2 className="font-headline-lg text-headline-lg text-primary mb-6 max-w-3xl mx-auto">
+          Bergabunglah dengan Gerakan Make Batik
+        </h2>
+        <p className="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto mb-12">
+          Setiap pembelian adalah tindakan nyata untuk melestarikan budaya, melindungi lingkungan, dan memberdayakan komunitas. Wear Art, Save Earth.
+        </p>
+        <div className="flex flex-col md:flex-row gap-4 justify-center">
+          <a
+            href="/produk"
+            className="px-8 py-4 border border-primary bg-primary text-on-primary font-label-caps text-label-caps hover:opacity-80 transition-opacity"
+          >
+            Jelajahi Koleksi
+          </a>
+          <a
+            href="/faq"
+            className="px-8 py-4 border border-primary bg-surface text-primary font-label-caps text-label-caps hover:bg-surface-container-low transition-colors"
+          >
+            Pelajari Lebih Lanjut
+          </a>
         </div>
       </section>
     </AppShell>
