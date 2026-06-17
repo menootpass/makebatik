@@ -31,13 +31,39 @@ export default function CheckoutModal() {
       setError("Semua field wajib diisi.");
       return;
     }
+
+    // Validasi email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      setError("Format email tidak valid.");
+      return;
+    }
+
+    // Validasi nomor telepon (minimal 10 digit)
+    const phoneRegex = /^[0-9]{10,}$/;
+    const phoneDigits = phone.replace(/\D/g, "");
+    if (!phoneRegex.test(phoneDigits)) {
+      setError("Nomor HP harus minimal 10 digit.");
+      return;
+    }
+
     setError("");
     setLoading(true);
     try {
+      console.log("[v0] Submitting order with customer data:", {
+        name,
+        email,
+        phone,
+        address,
+        items: cart.length,
+        total: getTotal(),
+      });
       await submitOrder({ name, email, phone, address });
+      // Redirect will happen from submitOrder, no need to set loading to false
     } catch (err) {
-      setError("Terjadi kesalahan: " + (err.message || "Coba lagi."));
-    } finally {
+      console.error("[v0] Checkout error:", err);
+      const errorMsg = err?.message || err?.toString() || "Terjadi kesalahan saat memproses pembayaran";
+      setError(errorMsg.includes("401") ? "Kredensial Midtrans tidak valid" : errorMsg);
       setLoading(false);
     }
   };
