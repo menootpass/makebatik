@@ -8,59 +8,14 @@ import { PRODUCTS } from "../../../data/products";
 import { formatRupiah } from "../../../lib/format";
 import AppShell from "../../../components/AppShell";
 
-export default function ProductDetailPage({ params }) {
+// Inner component that uses cart context (wrapped by AppShell/CartProvider)
+function ProductDetail({ product, params }) {
   const [selectedImage, setSelectedImage] = useState(0);
   const [selectedVariant, setSelectedVariant] = useState("M");
   const [quantity, setQuantity] = useState(1);
-  const [slug, setSlug] = useState("");
-  const [product, setProduct] = useState(null);
-
-  useEffect(() => {
-    const getParams = async () => {
-      const resolvedParams = await params;
-      setSlug(resolvedParams.slug);
-      const foundProduct = PRODUCTS.find(
-        (p) => p.name.toLowerCase().replace(/\s+/g, "-") === resolvedParams.slug
-      );
-      setProduct(foundProduct);
-    };
-    getParams();
-  }, [params]);
-
-  let addToCart = () => {};
-  try {
-    const cartContext = useCart();
-    addToCart = cartContext.addToCart;
-  } catch (e) {
-    // useCart may not be available during initial render
-  }
-
-  if (!product) {
-    if (slug) {
-      return (
-        <AppShell>
-          <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-32 text-center">
-            <h1 className="font-headline-lg text-headline-lg text-primary mb-4">Produk Tidak Ditemukan</h1>
-            <p className="font-body-lg text-body-lg text-on-surface-variant mb-8">Maaf, produk yang Anda cari tidak tersedia.</p>
-            <Link
-              href="/products"
-              className="inline-flex items-center gap-2 font-label-caps text-label-caps text-primary uppercase border-b border-primary pb-1 hover:text-tertiary-container hover:border-tertiary-container transition-colors"
-            >
-              Kembali ke Koleksi
-              <span className="material-symbols-outlined text-sm">arrow_forward</span>
-            </Link>
-          </div>
-        </AppShell>
-      );
-    }
-    return (
-      <AppShell>
-        <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-32 text-center">
-          <p className="font-body-lg text-body-lg text-on-surface-variant">Memuat produk...</p>
-        </div>
-      </AppShell>
-    );
-  }
+  
+  // Get cart context - now it's inside CartProvider from AppShell
+  const { addToCart } = useCart();
 
   const images = [product.image, product.image, product.image];
 
@@ -78,7 +33,7 @@ export default function ProductDetailPage({ params }) {
   };
 
   return (
-    <AppShell navVariant="minimal">
+    <>
       {/* Product Hero Section */}
       <section className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop pt-8 md:pt-12 pb-8 md:pb-12 border-b border-primary">
         <Link
@@ -153,26 +108,26 @@ export default function ProductDetailPage({ params }) {
             {/* Description */}
             <div className="border-t border-primary pt-8 mb-8">
               <p className="font-body-lg text-body-lg text-on-surface-variant leading-relaxed mb-6">
-                Masterpiece batik crafted with meticulous attention to detail. This exquisite piece represents the pinnacle of traditional artistry combined with contemporary sophistication. Hand-drawn using traditional canting tools and dyed with eco-friendly botanical pigments.
+                Make Batik menghadirkan inovasi produk berbasis pemanfaatan limbah kertas semen dan plastik daur ulang yang diolah menjadi produk fungsional dengan nilai estetika dan ekonomi tinggi. Setiap piece menggabungkan kreativitas desain dengan keberlanjutan lingkungan, menciptakan fashion yang tidak hanya unggul secara visual tetapi juga memiliki value proposition kuat.
               </p>
 
               {/* Product Details Grid */}
               <div className="grid grid-cols-2 gap-6 mb-8">
                 <div>
                   <p className="font-label-caps text-label-caps text-on-surface-variant mb-2 uppercase">Material</p>
-                  <p className="font-body-lg text-body-lg text-primary">Premium Silk</p>
+                  <p className="font-body-lg text-body-lg text-primary">Limbah Kertas Semen & Plastik Daur Ulang</p>
                 </div>
                 <div>
-                  <p className="font-label-caps text-label-caps text-on-surface-variant mb-2 uppercase">Technique</p>
-                  <p className="font-body-lg text-body-lg text-primary">Hand-Drawn Batik</p>
+                  <p className="font-label-caps text-label-caps text-on-surface-variant mb-2 uppercase">Teknik</p>
+                  <p className="font-body-lg text-body-lg text-primary">Batik Tradisional</p>
                 </div>
                 <div>
-                  <p className="font-label-caps text-label-caps text-on-surface-variant mb-2 uppercase">Origin</p>
-                  <p className="font-body-lg text-body-lg text-primary">Java, Indonesia</p>
+                  <p className="font-label-caps text-label-caps text-on-surface-variant mb-2 uppercase">Asal</p>
+                  <p className="font-body-lg text-body-lg text-primary">Yogyakarta, Indonesia</p>
                 </div>
                 <div>
-                  <p className="font-label-caps text-label-caps text-on-surface-variant mb-2 uppercase">Care</p>
-                  <p className="font-body-lg text-body-lg text-primary">Dry Clean Only</p>
+                  <p className="font-label-caps text-label-caps text-on-surface-variant mb-2 uppercase">Perawatan</p>
+                  <p className="font-body-lg text-body-lg text-primary">Cuci Lembut / Dry Clean</p>
                 </div>
               </div>
             </div>
@@ -265,27 +220,27 @@ export default function ProductDetailPage({ params }) {
       {/* Additional Information Tabs */}
       <section className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-12 md:py-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {/* Craftsmanship */}
+          {/* Warisan Budaya */}
           <div className="border-l border-primary pl-6 md:pl-8">
-            <h3 className="font-headline-md text-headline-md text-primary mb-4">Craftsmanship</h3>
+            <h3 className="font-headline-md text-headline-md text-primary mb-4">Warisan Budaya</h3>
             <p className="font-body-md text-body-md text-on-surface-variant leading-relaxed">
-              Each piece is meticulously hand-drawn by master artisans using traditional copper canting pens. The intricate patterns are created with precision and patience, making every piece uniquely authentic.
+              Produk Make Batik menggabungkan batik sebagai warisan budaya dengan desain kreatif dalam produk fashion yang relevan dengan tren global. Setiap piece merupakan representasi dari nilai-nilai lokal yang diperkuat melalui inovasi kontemporer.
             </p>
           </div>
 
-          {/* Materials */}
+          {/* Bahan Berkelanjutan */}
           <div className="border-l border-primary pl-6 md:pl-8">
-            <h3 className="font-headline-md text-headline-md text-primary mb-4">Materials</h3>
+            <h3 className="font-headline-md text-headline-md text-primary mb-4">Bahan Berkelanjutan</h3>
             <p className="font-body-md text-body-md text-on-surface-variant leading-relaxed">
-              Sourced from the finest suppliers, our premium silk and cotton blends provide an exquisite drape and luxurious feel. Every material is carefully selected for durability and aesthetic appeal.
+              Mengoptimalkan limbah kertas semen dan plastik daur ulang sebagai bahan baku utama, menciptakan produk berkualitas dengan nilai estetika dan fungsionalitas tinggi. Limbah yang sebelumnya tidak bernilai kini memiliki fungsi dan daya jual premium.
             </p>
           </div>
 
-          {/* Sustainability */}
+          {/* Dampak Lingkungan */}
           <div className="border-l border-primary pl-6 md:pl-8">
-            <h3 className="font-headline-md text-headline-md text-primary mb-4">Sustainability</h3>
+            <h3 className="font-headline-md text-headline-md text-primary mb-4">Dampak Lingkungan</h3>
             <p className="font-body-md text-body-md text-on-surface-variant leading-relaxed">
-              We use eco-friendly botanical dyes sourced sustainably from nature. Our commitment to environmental responsibility ensures that luxury and sustainability go hand in hand.
+              Mengurangi limbah dengan memanfaatkan limbah kertas semen dan plastik sebagai bahan fashion bernilai guna, mendukung konsep fashion berkelanjutan dan ekonomi sirkular. Setiap pembelian berkontribusi pada pengurangan dampak lingkungan global.
             </p>
           </div>
         </div>
@@ -321,6 +276,58 @@ export default function ProductDetailPage({ params }) {
             })}
         </div>
       </section>
+    </>
+  );
+}
+
+// Outer component that provides AppShell/CartProvider wrapper
+export default function ProductDetailPage({ params }) {
+  const [slug, setSlug] = useState("");
+  const [product, setProduct] = useState(null);
+
+  useEffect(() => {
+    const getParams = async () => {
+      const resolvedParams = await params;
+      setSlug(resolvedParams.slug);
+      const foundProduct = PRODUCTS.find(
+        (p) => p.name.toLowerCase().replace(/\s+/g, "-") === resolvedParams.slug
+      );
+      setProduct(foundProduct);
+    };
+    getParams();
+  }, [params]);
+
+  // Loading/Not found state
+  if (!product) {
+    if (slug) {
+      return (
+        <AppShell>
+          <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-32 text-center">
+            <h1 className="font-headline-lg text-headline-lg text-primary mb-4">Produk Tidak Ditemukan</h1>
+            <p className="font-body-lg text-body-lg text-on-surface-variant mb-8">Maaf, produk yang Anda cari tidak tersedia.</p>
+            <Link
+              href="/produk"
+              className="inline-flex items-center gap-2 font-label-caps text-label-caps text-primary uppercase border-b border-primary pb-1 hover:text-tertiary-container hover:border-tertiary-container transition-colors"
+            >
+              Kembali ke Koleksi
+              <span className="material-symbols-outlined text-sm">arrow_forward</span>
+            </Link>
+          </div>
+        </AppShell>
+      );
+    }
+    return (
+      <AppShell>
+        <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-32 text-center">
+          <p className="font-body-lg text-body-lg text-on-surface-variant">Memuat produk...</p>
+        </div>
+      </AppShell>
+    );
+  }
+
+  return (
+    <AppShell navVariant="minimal">
+      <ProductDetail product={product} params={params} />
     </AppShell>
   );
 }

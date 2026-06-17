@@ -162,7 +162,7 @@ export default function CartSidebar() {
               Tambahkan produk dari halaman koleksi untuk mulai berbelanja.
             </p>
             <Link
-              href="/products"
+              href="/produk"
               onClick={closeCart}
               className="mt-6 inline-flex items-center gap-2 bg-primary text-on-primary font-label-caps text-label-caps uppercase tracking-widest px-6 py-3 hover:bg-transparent hover:text-primary border border-primary transition-all duration-300"
             >
