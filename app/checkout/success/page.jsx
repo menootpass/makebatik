@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import AppShell from "../../components/AppShell";
+import AppShell from "../../../components/AppShell";
 
 export default function SuccessPage() {
   const [orderData, setOrderData] = useState(null);
