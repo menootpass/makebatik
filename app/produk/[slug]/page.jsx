@@ -8,72 +8,20 @@ import { PRODUCTS } from "../../../data/products";
 import { formatRupiah } from "../../../lib/format";
 import AppShell from "../../../components/AppShell";
 
-function ProductDetailContent({ params }) {
+// Inner component that uses cart context (wrapped by AppShell/CartProvider)
+function ProductDetail({ product, params }) {
   const [selectedImage, setSelectedImage] = useState(0);
   const [selectedVariant, setSelectedVariant] = useState("M");
   const [quantity, setQuantity] = useState(1);
-  const [slug, setSlug] = useState("");
-  const [product, setProduct] = useState(null);
   
-  // Safely get cart context
-  let addToCartFn = () => {};
-  try {
-    const cartContext = useCart();
-    if (cartContext) {
-      addToCartFn = cartContext.addToCart;
-    }
-  } catch (e) {
-    // Context may not be available in some cases
-  }
-
-  useEffect(() => {
-    const getParams = async () => {
-      const resolvedParams = await params;
-      setSlug(resolvedParams.slug);
-      const foundProduct = PRODUCTS.find(
-        (p) => p.name.toLowerCase().replace(/\s+/g, "-") === resolvedParams.slug
-      );
-      setProduct(foundProduct);
-    };
-    getParams();
-  }, [params]);
-
-  if (!product) {
-    if (slug) {
-      return (
-        <AppShell>
-          <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-32 text-center">
-            <h1 className="font-headline-lg text-headline-lg text-primary mb-4">Produk Tidak Ditemukan</h1>
-            <p className="font-body-lg text-body-lg text-on-surface-variant mb-8">Maaf, produk yang Anda cari tidak tersedia.</p>
-            <Link
-              href="/products"
-              className="inline-flex items-center gap-2 font-label-caps text-label-caps text-primary uppercase border-b border-primary pb-1 hover:text-tertiary-container hover:border-tertiary-container transition-colors"
-            >
-              Kembali ke Koleksi
-              <span className="material-symbols-outlined text-sm">arrow_forward</span>
-            </Link>
-          </div>
-        </AppShell>
-      );
-    }
-    return (
-      <AppShell>
-        <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-32 text-center">
-          <p className="font-body-lg text-body-lg text-on-surface-variant">Memuat produk...</p>
-        </div>
-      </AppShell>
-    );
-  }
+  // Get cart context - now it's inside CartProvider from AppShell
+  const { addToCart } = useCart();
 
   const images = [product.image, product.image, product.image];
 
   const handleAddToCart = () => {
-    if (!addToCartFn) {
-      alert("Terjadi kesalahan. Silakan refresh halaman.");
-      return;
-    }
     for (let i = 0; i < quantity; i++) {
-      addToCartFn({
+      addToCart({
         id: product.id,
         name: product.name,
         price: product.price,
@@ -85,7 +33,7 @@ function ProductDetailContent({ params }) {
   };
 
   return (
-    <AppShell navVariant="minimal">
+    <>
       {/* Product Hero Section */}
       <section className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop pt-8 md:pt-12 pb-8 md:pb-12 border-b border-primary">
         <Link
@@ -328,10 +276,58 @@ function ProductDetailContent({ params }) {
             })}
         </div>
       </section>
-    </AppShell>
+    </>
   );
 }
 
+// Outer component that provides AppShell/CartProvider wrapper
 export default function ProductDetailPage({ params }) {
-  return <ProductDetailContent params={params} />;
+  const [slug, setSlug] = useState("");
+  const [product, setProduct] = useState(null);
+
+  useEffect(() => {
+    const getParams = async () => {
+      const resolvedParams = await params;
+      setSlug(resolvedParams.slug);
+      const foundProduct = PRODUCTS.find(
+        (p) => p.name.toLowerCase().replace(/\s+/g, "-") === resolvedParams.slug
+      );
+      setProduct(foundProduct);
+    };
+    getParams();
+  }, [params]);
+
+  // Loading/Not found state
+  if (!product) {
+    if (slug) {
+      return (
+        <AppShell>
+          <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-32 text-center">
+            <h1 className="font-headline-lg text-headline-lg text-primary mb-4">Produk Tidak Ditemukan</h1>
+            <p className="font-body-lg text-body-lg text-on-surface-variant mb-8">Maaf, produk yang Anda cari tidak tersedia.</p>
+            <Link
+              href="/produk"
+              className="inline-flex items-center gap-2 font-label-caps text-label-caps text-primary uppercase border-b border-primary pb-1 hover:text-tertiary-container hover:border-tertiary-container transition-colors"
+            >
+              Kembali ke Koleksi
+              <span className="material-symbols-outlined text-sm">arrow_forward</span>
+            </Link>
+          </div>
+        </AppShell>
+      );
+    }
+    return (
+      <AppShell>
+        <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-32 text-center">
+          <p className="font-body-lg text-body-lg text-on-surface-variant">Memuat produk...</p>
+        </div>
+      </AppShell>
+    );
+  }
+
+  return (
+    <AppShell navVariant="minimal">
+      <ProductDetail product={product} params={params} />
+    </AppShell>
+  );
 }
