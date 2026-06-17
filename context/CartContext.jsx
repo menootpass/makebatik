@@ -103,6 +103,7 @@ export function CartProvider({ children }) {
   const submitOrder = useCallback(
     async ({ name, email, phone, address }) => {
       if (cart.length === 0) throw new Error("Keranjang kosong.");
+      
       const orderId = "MB-" + Date.now();
       const total = getTotal();
       const items = cart.map((i) => ({
@@ -112,11 +113,43 @@ export function CartProvider({ children }) {
         quantity: i.qty,
       }));
 
-      await new Promise((r) => setTimeout(r, 600));
+      try {
+        // Call API untuk membuat transaksi Midtrans
+        const response = await fetch("/api/payment/create", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            orderId,
+            amount: total,
+            name,
+            email,
+            phone,
+            address,
+            items,
+          }),
+        });
 
-      setCheckoutOpen(false);
-      setSuccessData({ orderId, total, name, email, items });
-      setSuccessOpen(true);
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(data.error || "Gagal membuat transaksi");
+        }
+
+        // Redirect ke Midtrans payment page
+        if (data.redirect_url) {
+          // Store order data sebelum redirect
+          localStorage.setItem(
+            "pending_order",
+            JSON.stringify({ orderId, total, name, email, items })
+          );
+          window.location.href = data.redirect_url;
+        } else {
+          throw new Error("Tidak ada redirect URL dari Midtrans");
+        }
+      } catch (error) {
+        console.error("[v0] Submit order error:", error);
+        throw error;
+      }
     },
     [cart, getTotal]
   );
