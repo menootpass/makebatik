@@ -14,6 +14,7 @@ export default function ProductDetailPage({ params }) {
   const [quantity, setQuantity] = useState(1);
   const [slug, setSlug] = useState("");
   const [product, setProduct] = useState(null);
+  
 
   useEffect(() => {
     const getParams = async () => {
