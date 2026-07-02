@@ -7,9 +7,8 @@ import { useCart } from "../context/CartContext";
 
 const NAV_LINKS = [
   { href: "/", label: "Home" },
-  { href: "/faq", label: "FAQ" },
-  { href: "/products", label: "Produk" },
-  { href: "/filosofi", label: "Filosofi" },
+  { href: "/produk", label: "Produk" },
+  { href: "/#filosofi", label: "Filosofi" },
   { href: "/edukasi", label: "Edukasi" },
   { href: "/faq", label: "Hubungi Kami" },
 ];

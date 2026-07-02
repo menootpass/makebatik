@@ -1,52 +1,68 @@
 export const PRODUCTS = [
   {
     id: "p1",
-    name: "Kemeja Sekar Jagad",
-    price: 2500000,
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuBz0zK-XhQXLPGTCJ4xLYS5b-ClCgwd1zaLYNXZINtQvvRYigoUL3h-j2w-HqPKQQg0mV8k69YiMRPq75gpW0nOh1YUyFPP10GBGDnP2_TOpD-HSRVd1MR_iIXjh5rSRTcD3vmsZi0nWx83TzEqlfYd900IfwmQFa-bGSqOuFr707srfCIOmCjTpG0rwwA06OFbC_isyAhxaU-Dn61u0hAGXhI68tRNI0zCRVHDdr263VEvDsJ-GJH_pgCk5rBKX76T57qW1iiuu9Y8",
-    variant: "M",
-    badge: "New Arrival",
+    name: "Hand Bag for Women",
+    price: 280000,
+    image: "/handbag_women.png",
+    description:
+      "Tas tangan elegan untuk wanita, dibuat dari limbah kertas semen yang didaur ulang dengan motif batik khas. Setiap pembelian membantu mengurangi limbah industri dan menjaga bumi tetap hijau. Pilih gaya, pilih keberlanjutan.",
+    ecoMessage:
+      "Setiap tas ini menyelamatkan ±500g kertas semen dari tempat pembuangan akhir.",
+    care: [
+      "Hindari paparan air langsung",
+      "Simpan di tempat kering dan sejuk",
+      "Bersihkan dengan kain lembab jika kotor",
+      "Jangan digantung dalam jangka panjang",
+    ],
+    badge: "Eco Product",
   },
   {
     id: "p2",
-    name: "Blus Sutra Megamendung",
-    price: 3800000,
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuDuUcGYhRJctkQl5H1piIbIyBd_NsKki0SWPasj6mqrmQAMFKWkHdDxYrSxbbacE0qxRn6sK8I8aTQcYBCkuva8YfWc4Y78IXLXspzgMB_y9Rhtx8qYCSseCgbMBHjjdVQqcLfiR3f0Dwek72JeS-BdcPvCX1VaAqc5jpx18c8AhzUaUU65QW1nz0yT-qaWfgZFMMVETAlrFR6kms8TcRhRNt128GwkaYnLvjYZYXs_WyNZ6OrySOSNbRaP8RrrMq9gfnonCQdHaXR2",
-    variant: "L",
+    name: "Clutch Bag For Man",
+    price: 140000,
+    image: "/clutch_bag_man.png",
+    description:
+      "Clutch bag maskulin dari bahan upcycled kertas semen berpola batik. Desain minimalis yang cocok untuk pria modern. Dengan membelinya, Anda turut berkontribusi mengurangi jejak karbon dan mendukung ekonomi sirkular.",
+    ecoMessage:
+      "Diproduksi dari limbah kertas semen — bukan dari kulit hewan, bukan dari plastik.",
+    care: [
+      "Jaga dari kelembaban berlebih",
+      "Bersihkan dengan lap kering",
+      "Simpan di dalam dust bag jika tidak dipakai",
+      "Hindari beban berlebihan",
+    ],
   },
   {
     id: "p3",
-    name: "Kain Panjang Parang Kusuma",
-    price: 1950000,
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuBgjkKKaQWcsAfF22umqzo0DH45oEUPo2w0SUfq56BC9h04vilopxKHFUFFcQe0Rz6Nudmxo1goWrvtb4S1b3aJ2ClllK7I2Ru56Cg_W1UQflBbhubCnQor45zEm34u3sZJdmJoyMLt2vORmh_ZJigtUdrA97XpKVhZe-NG-f7cktlQYNGY-nardpkNCkcnWlCPu3N4UsgUCfiYlMI-IYyV1eaJ4tzP5GjlfXh9Nx7asqKTHF7Xi_h55IVpz69VqllKBmCklLVibxjx",
-    variant: "One Size",
+    name: "Shoulder Bag for Women",
+    price: 240000,
+    image: "/shoulder_bag_women.png",
+    description:
+      "Tas selempang cantik dengan tali panjang yang terbuat dari kertas semen bekas bermotif batik. Setiap pembelian = satu langkah nyata melestarikan bumi dan mengurangi limbah industri konstruksi.",
+    ecoMessage:
+      "Bergaya sambil melestarikan bumi — karena fashion yang baik dimulai dari pilihan yang bertanggung jawab.",
+    care: [
+      "Hindari hujan dan air",
+      "Bersihkan dengan kain bersih dan kering",
+      "Simpan di tempat tidak lembab",
+      "Jangan taruh di bawah benda berat",
+    ],
+    badge: "Best Seller",
   },
   {
     id: "p4",
-    name: "Selendang Sutra Truntum",
-    price: 4200000,
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuDdvJT_rcZZDVm44-BX1fZ0zcKITBjL2ZRMKDc4FLC3PhxMLxu8F1s8SjButi-xAUhkeoA0g9zwnEFRxfpMsgiZ8kHaBeaXya0rBo8Ojh2EyeFb_mEhAKCekXCoxJczT_wMPiDgDbt2fHVSEMWmwtLmUmcIMjK2Dc1xS3Qkoao9z8zfmjocL-_NZvo-C62j65Q7nPs2lM7VfJK00F8u6pRoWAtapvr_pps81uMGoZ3ocjMOJImxSX_d33kietG0fb5LXNHZF15D7dWk",
-    variant: "One Size",
-    badge: "Limited Edition",
-  },
-  {
-    id: "p5",
-    name: "Kain Tulis Pesisir Lasem",
-    price: 5100000,
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuBSXXOPdCwe2DZbnP_0sL6yEjOsMQGBaAngWQWZciklz6fDGU5bh34hechnGYFQHrdnGFicGqP5UqJMEQd4MpkZSgpysj_a6Xq2Dvr6SA2uzicuiHnZAu-KRfjnNAguNG9K6t0VmdLSJDK2XyxYPRxMURa1eiJ2Id7loyX48FXU9bK6tmsulYUgwxjIVUXIi62XhnjT_MHBtt3iGZ2uxWX-lL0rWvid4Wb3xYej65sI9kMgLA-r-igdW7Mgp4IHChwsVM3jSIV76UYt",
-    variant: "One Size",
-  },
-  {
-    id: "p6",
-    name: "Dress Midi Sidomukti",
-    price: 4500000,
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuDkmqsPD4fBnyDcIBXANYQ9RXZb0XNs2raFhkPsKkvJSgnhI4OZ0OzDv9-1IAlE7iLELvlizH6jJjwMEK4ORB6wBZ8tEB-bM8WLLaAWB5cJQCHeMQRWYj2mEyxqjNcKjQYEW-vSaFJe8toJAded0lYWUjaH9zQOrOAmAAlT3ZiqbMMBIrT_DwNfrXONCgIRMZK_J2HazAnvEukBgu3gb21dyhoiVMsV5rA3MJruMPQLJNyg1NLVPnalsvEWsCLuXXk9Vb95-lAQH1pQ",
-    variant: "M",
+    name: "Obi Belt",
+    price: 50000,
+    image: "/obi_belt.png",
+    description:
+      "Ikat pinggang obi bergaya Jepang yang terinspirasi dari motif batik, dibuat dari kertas semen daur ulang. Aksesori ramah lingkungan yang tampil beda. Pilih produk ini, kurangi limbah, dan jaga bumi untuk generasi berikutnya.",
+    ecoMessage:
+      "Aksesori kecil, dampak besar — setiap obi belt membantu mengurangi limbah kertas semen yang mencemari lingkungan.",
+    care: [
+      "Simpan dalam keadaan datar atau digulung longgar",
+      "Jauhkan dari air dan kelembaban",
+      "Setrika dengan suhu rendah jika perlu",
+      "Bersihkan dengan kain lembab",
+    ],
   },
 ];

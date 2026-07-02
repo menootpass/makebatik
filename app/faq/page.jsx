@@ -3,6 +3,23 @@
 import { useState } from "react";
 import AppShell from "../../components/AppShell";
 
+function useContactForm() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!name.trim() || !message.trim()) return;
+    const text = encodeURIComponent(
+      `Halo Make Batik! Saya ${name} (${email}).\n\n${message}`
+    );
+    window.open(`https://wa.me/6289606883082?text=${text}`, "_blank");
+  };
+
+  return { name, setName, email, setEmail, message, setMessage, handleSubmit };
+}
+
 const FAQ_ITEMS = [
   {
     q: "Bagaimana cara terbaik merawat kain Batik tulis agar warnanya tidak pudar?",
@@ -50,6 +67,7 @@ function AccordionItem({ item, open, onToggle }) {
 
 export default function FAQPage() {
   const [openIndex, setOpenIndex] = useState(null);
+  const { name, setName, email, setEmail, message, setMessage, handleSubmit } = useContactForm();
 
   return (
     <AppShell>
@@ -89,47 +107,63 @@ export default function FAQPage() {
                   Hubungi konsultan gaya kami untuk permintaan khusus atau bantuan personal.
                 </p>
               </div>
-              <form className="space-y-8" onSubmit={(e) => e.preventDefault()}>
-                {[
-                  { id: "name", label: "Nama Lengkap", type: "text", placeholder: "Cth: Raden Ajeng Kartini" },
-                  { id: "email", label: "Alamat Email", type: "email", placeholder: "Cth: kartini@email.com" },
-                ].map((field) => (
-                  <div key={field.id} className="relative group/input">
-                    <label
-                      htmlFor={field.id}
-                      className="block font-label-caps text-label-caps text-on-surface-variant mb-2 transition-colors group-focus-within/input:text-primary"
-                    >
-                      {field.label}
-                    </label>
-                    <input
-                      id={field.id}
-                      type={field.type}
-                      required
-                      className="w-full bg-transparent border-0 border-b border-outline-variant px-0 py-2 font-body-md text-body-md text-primary focus:ring-0 focus:border-primary transition-colors placeholder:text-outline-variant/50"
-                      placeholder={field.placeholder}
-                    />
-                  </div>
-                ))}
+              <form className="space-y-8" onSubmit={handleSubmit}>
                 <div className="relative group/input">
                   <label
-                    htmlFor="message"
+                    htmlFor="faq-name"
+                    className="block font-label-caps text-label-caps text-on-surface-variant mb-2 transition-colors group-focus-within/input:text-primary"
+                  >
+                    Nama Lengkap
+                  </label>
+                  <input
+                    id="faq-name"
+                    type="text"
+                    required
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    className="w-full bg-transparent border-0 border-b border-outline-variant px-0 py-2 font-body-md text-body-md text-primary focus:ring-0 focus:border-primary transition-colors placeholder:text-outline-variant/50"
+                    placeholder="Cth: Raden Ajeng Kartini"
+                  />
+                </div>
+                <div className="relative group/input">
+                  <label
+                    htmlFor="faq-email"
+                    className="block font-label-caps text-label-caps text-on-surface-variant mb-2 transition-colors group-focus-within/input:text-primary"
+                  >
+                    Alamat Email
+                  </label>
+                  <input
+                    id="faq-email"
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="w-full bg-transparent border-0 border-b border-outline-variant px-0 py-2 font-body-md text-body-md text-primary focus:ring-0 focus:border-primary transition-colors placeholder:text-outline-variant/50"
+                    placeholder="Cth: kartini@email.com"
+                  />
+                </div>
+                <div className="relative group/input">
+                  <label
+                    htmlFor="faq-message"
                     className="block font-label-caps text-label-caps text-on-surface-variant mb-2 transition-colors group-focus-within/input:text-primary"
                   >
                     Pesan Anda
                   </label>
                   <textarea
-                    id="message"
+                    id="faq-message"
                     required
                     rows={4}
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
                     className="w-full bg-transparent border-0 border-b border-outline-variant px-0 py-2 font-body-md text-body-md text-primary focus:ring-0 focus:border-primary transition-colors resize-none placeholder:text-outline-variant/50"
                     placeholder="Tuliskan pertanyaan atau detail pesanan khusus Anda di sini..."
                   />
                 </div>
                 <button
                   type="submit"
-                  className="w-full mt-4 bg-primary text-on-primary border border-primary py-4 px-6 font-label-caps text-label-caps uppercase tracking-widest hover:bg-transparent hover:text-primary transition-all duration-300 flex items-center justify-center space-x-2"
+                  className="w-full mt-4 bg-primary text-on-primary border border-primary py-4 px-6 font-label-caps text-label-caps uppercase tracking-widest hover:bg-transparent hover:text-primary transition-all duration-300 flex items-center justify-center gap-2"
                 >
-                  <span>Kirim Pesan</span>
+                  <span className="material-symbols-outlined text-[18px]">chat</span>
+                  <span>Kirim via WhatsApp</span>
                   <span className="material-symbols-outlined text-sm">arrow_right_alt</span>
                 </button>
               </form>

@@ -37,7 +37,7 @@ export default function Footer({ variant = "default" }) {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/filosofi" className="text-on-primary-fixed-variant hover:text-tertiary-fixed-dim transition-colors opacity-90">
+                  <Link href="/#filosofi" className="text-on-primary-fixed-variant hover:text-tertiary-fixed-dim transition-colors opacity-90">
                     Our Story
                   </Link>
                 </li>

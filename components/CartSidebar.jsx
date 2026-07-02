@@ -92,9 +92,19 @@ export default function CartSidebar() {
     getTotal,
     getTotalItems,
     formatRupiah,
-    initiateCheckout,
     toast,
   } = useCart();
+
+  const handleWhatsAppCheckout = () => {
+    if (cart.length === 0) return;
+    const itemsList = cart
+      .map((item) => `- ${item.name} x${item.qty} (${formatRupiah(item.price * item.qty)})`)
+      .join("%0A");
+    const total = getTotal();
+    const message = `Mau Beli%0A%0A${itemsList}%0A%0ATotal: ${formatRupiah(total)}`;
+    window.open(`https://wa.me/6289606883082?text=${message}`, "_blank");
+    closeCart();
+  };
 
   const total = getTotal();
   const totalItems = getTotalItems();
@@ -122,7 +132,7 @@ export default function CartSidebar() {
               Keranjang Belanja
             </h2>
             <p className="font-label-caps text-label-caps text-on-surface-variant mt-1 uppercase tracking-widest">
-              Exclusive Batik Collection
+              Produk Ramah Lingkungan
             </p>
           </div>
           <button
@@ -185,12 +195,12 @@ export default function CartSidebar() {
             </p>
             <button
               type="button"
-              onClick={initiateCheckout}
+              onClick={handleWhatsAppCheckout}
               disabled={isEmpty}
               className="w-full bg-primary text-on-primary border border-primary py-4 font-label-caps text-label-caps uppercase tracking-widest hover:bg-transparent hover:text-primary transition-all duration-300 flex justify-center items-center gap-2 group disabled:opacity-40 disabled:cursor-not-allowed"
             >
-              <span className="material-symbols-outlined text-[18px]">payment</span>
-              Checkout via Midtrans
+              <span className="material-symbols-outlined text-[18px]">chat</span>
+              Checkout
               <span className="material-symbols-outlined text-[18px] transform group-hover:translate-x-1 transition-transform">
                 arrow_forward
               </span>
