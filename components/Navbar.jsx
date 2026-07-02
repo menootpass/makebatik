@@ -7,14 +7,11 @@ import { useCart } from "../context/CartContext";
 
 const NAV_LINKS = [
   { href: "/", label: "Home" },
-<<<<<<< HEAD
   { href: "/produk", label: "Produk" },
   { href: "/#filosofi", label: "Filosofi" },
-=======
   { href: "/faq", label: "FAQ" },
   { href: "/produk", label: "Produk" },
   { href: "/filosofi", label: "Filosofi" },
->>>>>>> 3beed1bab9fe2b10b88013e9f8bead4412c02cdb
   { href: "/edukasi", label: "Edukasi" },
   { href: "/faq", label: "Hubungi Kami" }, // Catatan: link ini sama dengan FAQ, kamu bisa ubah nanti ke /kontak jika perlu
 ];
