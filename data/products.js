@@ -1,6 +1,7 @@
 export const PRODUCTS = [
   {
     id: "p1",
+<<<<<<< HEAD
     name: "Hand Bag for Women",
     price: 280000,
     image: "/handbag_women.png",
@@ -64,5 +65,48 @@ export const PRODUCTS = [
       "Setrika dengan suhu rendah jika perlu",
       "Bersihkan dengan kain lembab",
     ],
+=======
+    name: "Kemeja Sekar Jagad",
+    price: 2500000,
+    image: "/products/kemeja-sekar-jagad.png",
+    variant: "M",
+    badge: "New Arrival",
+  },
+  {
+    id: "p2",
+    name: "Blus Sutra Megamendung",
+    price: 3800000,
+    image: "/products/blus-sutra-megamendung.png",
+    variant: "L",
+  },
+  {
+    id: "p3",
+    name: "Kain Panjang Parang Kusuma",
+    price: 1950000,
+    image: "/products/kain-panjang-parang-kusuma.png",
+    variant: "One Size",
+  },
+  {
+    id: "p4",
+    name: "Selendang Sutra Truntum",
+    price: 4200000,
+    image: "/products/selendang-sutra-truntum.png",
+    variant: "One Size",
+    badge: "Limited Edition",
+  },
+  {
+    id: "p5",
+    name: "Kain Tulis Pesisir Lasem",
+    price: 5100000,
+    image: "/products/kain-tulis-pesisir-lasem.png",
+    variant: "One Size",
+  },
+  {
+    id: "p6",
+    name: "Dress Midi Sidomukti",
+    price: 4500000,
+    image: "/products/dress-midi-sidomukti.png",
+    variant: "M",
+>>>>>>> 3beed1bab9fe2b10b88013e9f8bead4412c02cdb
   },
 ];

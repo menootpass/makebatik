@@ -88,6 +88,7 @@ export default function ProductsPage() {
           {PRODUCTS.slice(0, 3).map((p) => (
             <ProductCard key={p.id} product={p} />
           ))}
+<<<<<<< HEAD
           <div className="col-span-1 border-r border-b border-primary bg-surface flex flex-col justify-center items-center p-12 text-center border-grid-item relative overflow-hidden group">
             <div
               className="absolute inset-0 opacity-5 pointer-events-none"
@@ -98,6 +99,9 @@ export default function ProductsPage() {
                 backgroundSize: "20px 20px",
               }}
             />
+=======
+          <div className="col-span-1 md:col-span-2 lg:col-span-2 border-r border-b border-primary bg-yellow-50 flex flex-col justify-center items-center p-12 text-center border-grid-item relative overflow-hidden group">
+>>>>>>> 3beed1bab9fe2b10b88013e9f8bead4412c02cdb
             <span
               className="material-symbols-outlined text-[48px] text-tertiary-container mb-6 opacity-80"
               style={{ fontVariationSettings: "'FILL' 1" }}

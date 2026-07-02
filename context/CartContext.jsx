@@ -103,6 +103,7 @@ export function CartProvider({ children }) {
   const submitOrder = useCallback(
     async ({ name, email, phone, address }) => {
       if (cart.length === 0) throw new Error("Keranjang kosong.");
+      
       const orderId = "MB-" + Date.now();
       const total = getTotal();
       const items = cart.map((i) => ({
@@ -112,11 +113,82 @@ export function CartProvider({ children }) {
         quantity: i.qty,
       }));
 
-      await new Promise((r) => setTimeout(r, 600));
+      try {
+        console.log("[v0] Calling payment/create endpoint...");
+        
+        // Create abort controller untuk timeout
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 30000); // 30 detik timeout
+        
+        // Call API untuk membuat transaksi Midtrans
+        const response = await fetch("/api/payment/create", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            orderId,
+            amount: total,
+            name,
+            email,
+            phone,
+            address,
+            items,
+          }),
+          signal: controller.signal,
+        });
 
-      setCheckoutOpen(false);
-      setSuccessData({ orderId, total, name, email, items });
-      setSuccessOpen(true);
+        clearTimeout(timeoutId);
+        
+        let data;
+        try {
+          data = await response.json();
+        } catch (parseError) {
+          console.error("[v0] Failed to parse response:", parseError);
+          throw new Error("Server mengembalikan response yang tidak valid");
+        }
+
+        if (!response.ok) {
+          const errorMsg = data?.error || data?.message || `HTTP ${response.status}`;
+          console.error("[v0] API error:", data);
+          throw new Error(errorMsg);
+        }
+
+        // Redirect ke Midtrans payment page
+        if (data.redirect_url) {
+          console.log("[v0] Storing order data and redirecting to Midtrans...");
+          // Store order data sebelum redirect
+          localStorage.setItem(
+            "pending_order",
+            JSON.stringify({ orderId, total, name, email, items })
+          );
+          // Give localStorage time to persist
+          await new Promise(resolve => setTimeout(resolve, 100));
+          window.location.href = data.redirect_url;
+        } else {
+          throw new Error("Midtrans tidak mengembalikan URL pembayaran");
+        }
+      } catch (error) {
+        console.error("[v0] Submit order error:", error);
+        if (error.name === "AbortError") {
+          throw new Error("Request timeout - server tidak merespons. Coba lagi.");
+        }
+        throw error;
+      }
+      try{
+        // Redirect ke Midtrans payment page
+        if (data.redirect_url) {
+          // Store order data sebelum redirect
+          localStorage.setItem(
+            "pending_order",
+            JSON.stringify({ orderId, total, name, email, items })
+          );
+          window.location.href = data.redirect_url;
+        } else {
+          throw new Error("Tidak ada redirect URL dari Midtrans");
+        }
+      } catch (error) {
+        console.error("[v0] Submit order error:", error);
+        throw error;
+      }
     },
     [cart, getTotal]
   );
