@@ -89,7 +89,7 @@ export default function ProductsPage() {
             <ProductCard key={p.id} product={p} />
           ))}
 
-          <div className="col-span-1 border-r border-b border-primary bg-surface flex flex-col justify-center items-center p-12 text-center border-grid-item relative overflow-hidden group">
+          <div className="col-span-1 md:col-span-2 lg:col-span-2 border-r border-b border-primary bg-surface flex flex-col justify-center items-center p-12 text-center border-grid-item relative overflow-hidden group">
             <div
               className="absolute inset-0 opacity-5 pointer-events-none"
               style={{
@@ -98,10 +98,7 @@ export default function ProductsPage() {
                 backgroundPosition: "0 0, 10px 10px",
                 backgroundSize: "20px 20px",
               }}
-            /> 
-            </div>
-          <div className="col-span-1 md:col-span-2 lg:col-span-2 border-r border-b border-primary bg-yellow-50 flex flex-col justify-center items-center p-12 text-center border-grid-item relative overflow-hidden group">
-
+            />
             <span
               className="material-symbols-outlined text-[48px] text-tertiary-container mb-6 opacity-80"
               style={{ fontVariationSettings: "'FILL' 1" }}
