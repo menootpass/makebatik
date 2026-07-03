@@ -195,7 +195,13 @@ export default function CartSidebar() {
             </p>
             <button
               type="button"
-              onClick={handleWhatsAppCheckout}
+              onClick={() => {
+                handleWhatsAppCheckout
+                // Memanggil fungsi Meta Pixel saat tombol diklik
+                if (typeof window !== 'undefined' && window.fbq) {
+                  window.fbq('track', 'Purchase');
+                }
+              }}
               disabled={isEmpty}
               className="w-full bg-primary text-on-primary border border-primary py-4 font-label-caps text-label-caps uppercase tracking-widest hover:bg-transparent hover:text-primary transition-all duration-300 flex justify-center items-center gap-2 group disabled:opacity-40 disabled:cursor-not-allowed"
             >
