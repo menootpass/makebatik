@@ -8,12 +8,9 @@ import { useCart } from "../context/CartContext";
 const NAV_LINKS = [
   { href: "/", label: "Home" },
   { href: "/produk", label: "Produk" },
-  { href: "/#filosofi", label: "Filosofi" },
-  { href: "/faq", label: "FAQ" },
-  { href: "/produk", label: "Produk" },
   { href: "/filosofi", label: "Filosofi" },
   { href: "/edukasi", label: "Edukasi" },
-  { href: "/faq", label: "Hubungi Kami" }, // Catatan: link ini sama dengan FAQ, kamu bisa ubah nanti ke /kontak jika perlu
+  { href: "/faq", label: "FAQ & Contact" }, // Catatan: link ini sama dengan FAQ, kamu bisa ubah nanti ke /kontak jika perlu
 ];
 
 function NavLink({ href, label, active, onClick }) {
