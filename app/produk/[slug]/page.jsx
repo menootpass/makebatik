@@ -1,3 +1,4 @@
+"use client";
 import AppShell from "../../../components/AppShell";
 import { PRODUCTS } from "../../../data/products";
 import Link from "next/link";
