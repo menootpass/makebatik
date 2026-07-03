@@ -160,6 +160,12 @@ export default function FAQPage() {
                 </div>
                 <button
                   type="submit"
+                  onClick={() => {
+                    // Memanggil fungsi Meta Pixel saat tombol diklik
+                    if (typeof window !== 'undefined' && window.fbq) {
+                      window.fbq('track', 'Contact');
+                    }
+                  }}
                   className="w-full mt-4 bg-primary text-on-primary border border-primary py-4 px-6 font-label-caps text-label-caps uppercase tracking-widest hover:bg-transparent hover:text-primary transition-all duration-300 flex items-center justify-center gap-2"
                 >
                   <span className="material-symbols-outlined text-[18px]">chat</span>
