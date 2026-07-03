@@ -91,7 +91,14 @@ export default function ProductCard({ product }) {
         {/* Add to cart — slides up on hover (desktop) */}
         <button
           type="button"
-          onClick={handleAdd}
+            onClick={() => {
+                handleAdd
+                  // Memanggil fungsi Meta Pixel saat tombol diklik
+                  if (typeof window !== 'undefined' && window.fbq) {
+                    window.fbq('track', 'AddToCart');
+                  }
+                }}
+          
           className="absolute bottom-0 left-0 w-full bg-primary text-on-primary py-3 font-label-caps text-label-caps opacity-0 group-hover:opacity-100 transform translate-y-full group-hover:translate-y-0 transition-all duration-300 flex justify-center items-center gap-2"
         >
           Tambah ke Keranjang
