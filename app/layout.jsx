@@ -15,8 +15,22 @@ const playfair = Playfair_Display({
 });
 
 export const metadata = {
-  title: "Make Batik | Exclusive Collection",
-  description: "Indonesian Heritage, Reimagined. Quiet luxury batik craftsmanship.",
+  title: "MakeBatik | Inovasi Batik Limbah & Kertas Semen Jogja",
+  description:
+    "Inovasi Batik Indonesia khas Batik Jogja ramah lingkungan! Temukan kreasi unik Batik Limbah, Batik Kertas Semen, dan Batik Limbah Plastik di sini.",
+  keywords: [
+    "Batik Limbah",
+    "Batik Kertas Semen",
+    "Batik Jogja",
+    "Batik Indonesia",
+    "Batik Limbah Plastik",
+  ],
+  openGraph: {
+    title: "MakeBatik - Inovasi Batik Limbah & Kertas Semen Jogja",
+    description:
+      "Inovasi Batik Indonesia khas Batik Jogja ramah lingkungan! Temukan kreasi unik Batik Limbah, Batik Kertas Semen, dan Batik Limbah Plastik di sini.",
+    type: "website",
+  },
 };
 
 export default function RootLayout({ children }) {
