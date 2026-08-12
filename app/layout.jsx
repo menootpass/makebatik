@@ -22,6 +22,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="id" className={`${inter.variable} ${playfair.variable}`}>
+      <meta name="google-site-verification" content="GZeUQHq7U2R1MOFa223dGD7QSQZ8cJOBXv0TSH2VBlI" />
       <head>
         <Script id="meta-pixel" strategy="afterInteractive">
           {`
