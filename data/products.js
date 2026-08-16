@@ -97,7 +97,7 @@ export const PRODUCTS = [
     id: "p7",
       name: "Karsa Hat",
       price: 140000,
-      image: "/KarsaHat.jpg",
+      image: "/Karsahat.jpg",
       description: "Karsa Hat! Produk inovatif multi-fungsi 2in1 yang memadukan keindahan fungsi topi piknik dan tas tangan stylish. Dibuat secara handcrafted dari kombinasi limbah kertas semen bermotif batik eksklusif dan rajutan limbah plastik daur ulang. Bahan diolah dengan teknik laminasi khusus sehingga menghasilkan struktur yang fleksibel, tahan lama, serta tahan terhadap percikan air untuk melengkapi penampilan OOTD Anda.",
       ecoMessage: "Tampil unik dan estetik sembari mendukung pemanfaatan kembali limbah kertas semen dan rajutan plastik.",
       care: [
