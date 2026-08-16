@@ -64,11 +64,9 @@ export const PRODUCTS = [
       "Setrika dengan suhu rendah jika perlu",
       "Bersihkan dengan kain lembab",
     ],
-
   },
-  [
-    {
-      id: "p5",
+  {
+    id: "p5",
       name: "Nara Clutch",
       price: 140000,
       image: "/naraClutch.jpg",
@@ -79,10 +77,10 @@ export const PRODUCTS = [
         "Hindari merendam produk dalam air atau paparan hujan lebat",
         "Simpan di tempat yang kering dan tidak lembab",
         "Jauhkan dari paparan sinar matahari langsung dalam waktu lama saat tidak digunakan"
-      ]
-    },
-    {
-      id: "p6",
+      ],
+  },
+  {
+    id: "p6",
       name: "Rona Clutch",
       price: 140000,
       image: "/RonaClutch.jpg",
@@ -93,10 +91,10 @@ export const PRODUCTS = [
         "Jauhkan dari air dan kelembaban",
         "Setrika dengan suhu rendah jika perlu",
         "Bersihkan dengan kain lembab"
-      ]
-    },
-    {
-      id: "p7",
+      ],
+  },
+  {
+    id: "p7",
       name: "Karsa Hat",
       price: 140000,
       image: "/KarsaHat.jpg",
@@ -107,7 +105,6 @@ export const PRODUCTS = [
         "Hindari melipat paksa bagian rajutan plastik agar bentuk tetap terjaga",
         "Simpan di tempat bersuhu ruangan dan tidak lembab",
         "Angin-anginkan hingga kering jika terkena percikan air sebelum disimpan"
-      ]
-    }
-  ]
+      ],
+  },
 ];

@@ -208,37 +208,7 @@ export default function EdukasiContent() {
                 <ArticleCard key={article.slug} article={article} />
               ))}
 
-              <div className="group flex flex-col border border-primary bg-surface transition-colors hover:bg-[#f9f9f9]">
-                <div className="h-64 border-b border-primary overflow-hidden flex items-center justify-center bg-surface-container-low">
-                  <div className="text-center p-8">
-                    <span className="material-symbols-outlined text-[48px] text-primary mb-4 block">
-                      school
-                    </span>
-                    <h3 className="font-headline-md text-headline-md text-primary">
-                      Join a Workshop
-                    </h3>
-                  </div>
-                </div>
-                <div className="p-6 flex flex-col flex-grow">
-                  <span className="font-label-caps text-label-caps text-outline uppercase tracking-widest mb-4">
-                    Experience
-                  </span>
-                  <h3 className="font-body-lg text-body-lg font-medium text-primary mb-3">
-                    In-Person Masterclasses
-                  </h3>
-                  <p className="font-body-md text-body-md text-on-surface-variant mb-6 line-clamp-2">
-                    Book a private session at our Jakarta atelier to learn the fundamentals of wax-resist dyeing from master artisans.
-                  </p>
-                  <div className="mt-auto pt-4">
-                    <Link
-                      href="/edukasi/workshop"
-                      className="inline-flex items-center justify-center px-6 py-3 border border-primary bg-primary text-on-primary font-label-caps text-label-caps uppercase tracking-widest hover:bg-surface hover:text-primary transition-colors w-full text-center"
-                    >
-                      View Schedule
-                    </Link>
-                  </div>
-                </div>
-              </div>
+              
             </div>
           </section>
         </>
