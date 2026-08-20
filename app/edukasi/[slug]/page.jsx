@@ -79,15 +79,9 @@ export default async function ArtikelPage({ params }) {
 
         <div className="max-w-3xl mt-20 pt-10 border-t border-primary flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6">
           <p className="font-body-md text-body-md text-on-surface-variant">
-            Terima kasih telah membaca. Jelajahi koleksi dan workshop kami.
+            Terima kasih telah membaca. Jelajahi koleksi kami.
           </p>
           <div className="flex gap-4">
-            <Link
-              href="/edukasi/workshop"
-              className="px-6 py-3 border border-primary font-label-caps text-label-caps uppercase tracking-widest text-primary hover:bg-primary hover:text-on-primary transition-all duration-300"
-            >
-              Workshop
-            </Link>
             <Link
               href="/products"
               className="px-6 py-3 bg-primary text-on-primary border border-primary font-label-caps text-label-caps uppercase tracking-widest hover:bg-transparent hover:text-primary transition-all duration-300"

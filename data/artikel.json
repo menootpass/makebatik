@@ -1,97 +1,71 @@
 {
   "articles": [
     {
-      "id": "the-alchemy-of-indigo",
-      "slug": "the-alchemy-of-indigo-traditional-dyeing-techniques",
-      "title": "The Alchemy of Indigo: Traditional Dyeing Techniques",
+      "id": "menuju-masa-depan",
+      "slug": "menuju-masa-depan-tanpa-limbah-bersama-make-batik",
+      "title": "Menuju Masa Depan Tanpa Limbah Bersama Make Batik",
       "category": "Masterclass",
       "reading_time": "12 Min Read",
-      "excerpt": "Discover the meticulous, weeks-long process of transforming raw indigo plants into the deep, enduring blues that characterize the most prized heritage textiles.",
-      "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuDszwXL18SxzxATSFVX1-OWL0TKYDah4Hjoao0M7ff8YcgvKeHOx-PD7vMzWvc7igFmLdd3N2VcVZaPkOBNh0HgR4_GqAeZX3IXH0TJ6ESVey3-iu68aoZQnLre8h1S0owrrOmW0BAdCDu0Al-mzMrY647OixcIiqxOt1GKQb2_wYq379h4azog8nIURUNSp7aOOle9yuN50TIZH1s2l6l8wmpNivzRJHaOJ1Rss0X7uM--KH_1N8jO85vi606yb2rwYtUlZJb4gSG_",
+      "excerpt": "Make Batik",
+      "image": "/images/kawung.jpg",
       "content": [
         {
-          "section_title": "Pendahuluan: Mengapa Disebut Alkimia?",
-          "text": "Pewarnaan kain menggunakan tanaman indigo (Indigofera tinctoria) sering kali disebut sebagai seni 'alkimia' tradisional. Istilah ini bukan sekadar kiasan; proses pembuatan warna biru dari daun hijau segar melibatkan transformasi kimiawi alami yang tampak magis di mata orang awam. Berbeda dengan pewarna sintetis modern yang memberikan warna instan, warna indigo alami menuntut dedikasi waktu berminggu-minggu, pemahaman biologis yang mendalam, dan kepekaan rasa dari sang perajin. Hasil akhirnya adalah warna biru tua yang hidup, memiliki kedalaman visual yang khas, dan ketahanan tinggi yang menjadikannya sebagai salah satu komoditas tekstil warisan budaya paling berharga di dunia."
+          "section_title": "Realita Krisis Limbah di Indonesia",
+          "text": "Indonesia menghadapi tantangan besar dengan timbulan sampah yang mencapai sekitar 18 juta ton per tahun [1, 2]. Berdasarkan data Sistem Informasi Pengelolaan Sampah Nasional (SIPSN) tahun 2025, sebanyak 65,82% dari total sampah tersebut masih belum terkelola dengan baik [2]. Komposisi sampah ini didominasi oleh sisa makanan, namun limbah plastik (20,51%) serta kertas dan karton (11,36%) menyumbang persentase yang signifikan terhadap kerusakan lingkungan [3]."
         },
         {
-          "section_title": "Fase 1: Pemanenan dan Ekstraksi Daun (Fermentasi)",
-          "text": "Perjalanan dimulai dari perkebunan tanaman Indigofera. Daun-daun indigo dipanen pada waktu subuh sebelum matahari bersinar terlalu terik, guna menjaga kandungan senyawa 'indican' tetap maksimal di dalam sel daun. Setelah dipanen, daun-daun segar tersebut langsung direndam dalam wadah besar berisi air untuk memulai proses fermentasi anaerobik selama 24 hingga 36 jam. Selama fase ini, mikroba alami akan memecah senyawa 'indican' menjadi 'indoxyl'. Air rendaman yang awalnya bening perlahan-lahan berubah warna menjadi kuning kehijauan yang pekat, menandakan bahwa zat pewarna siap diekstrak lebih lanjut."
+          "section_title": "Dampak Industri Fashion dan Fast Fashion",
+          "text": "Industri fashion merupakan penyumbang polusi terbesar kedua di dunia, menghasilkan sekitar 92 juta ton limbah tekstil setiap tahunnya [2]. Tren fast fashion mendorong konsumsi berlebih yang memperparah penumpukan limbah tekstil yang tidak terkelola [2, 4]. Limbah ini memberikan dampak multidimensional yang sistemik terhadap lingkungan, di mana masyarakat umum menjadi pihak yang terdampak langsung akibat penurunan kualitas ekosistem [3]."
         },
         {
-          "section_title": "Fase 2: Oksidasi dan Pembuatan Pasta Indigo",
-          "text": "Setelah proses fermentasi selesai, daun-daun dipisahkan, dan air rendaman hijau kesumba tersebut memasuki tahap aerasi atau oksidasi. Air dipukul-pukul secara manual menggunakan gayung kayu atau diaduk secara agresif untuk memasukkan oksigen ke dalam cairan. Begitu oksigen mengikat senyawa 'indoxyl', keajaiban visual pertama terjadi: cairan berubah warna secara dramatis dari kuning-hijau menjadi biru pekat dan memicu busa tebal. Untuk mengendapkan zat biru tersebut, perajin menambahkan kapur sirih (kalsium hidroksida) sebagai pengikat flokulasi. Campuran dibiarkan mengendap semalaman, menghasilkan lumpur tipis berwarna biru di dasar wadah. Air bagian atas kemudian dibuang, dan endapan lumpur disaring menggunakan kain halus hingga membentuk pasta indigo padat yang tahan disimpan lama."
+          "section_title": "Mengenal Limbah Kertas Semen dan Plastik",
+          "text": "Limbah kertas semen umumnya terbuat dari kertas kraft berlapis plastik, menjadikannya material yang kuat namun sangat sulit terurai secara alami di lingkungan [5]. Sementara itu, sampah plastik dari rumah tangga menjadi sumber utama limbah anorganik yang terus meningkat tanpa diimbangi kapasitas pengelolaan yang memadai [2, 3]. Material-material non-konvensional ini sebenarnya memiliki potensi ekonomi tinggi jika diolah kembali dengan pendekatan desain kreatif [1, 6]."
         },
         {
-          "section_title": "Fase 3: Menghidupkan Kembali Tong Pewarna (The Dye Vat)",
-          "text": "Pasta indigo yang sudah jadi sebenarnya tidak dapat larut dalam air dan tidak bisa langsung mengikat serat kain. Di sinilah letak 'alkimia' sesungguhnya. Perajin harus membuat sebuah ekosistem mikroba dalam tong pewarnaan (dye vat). Pasta indigo dicampur kembali dengan air, kapur sirih untuk menciptakan lingkungan basa yang spesifik (pH 10-11), serta agen pereduksi alami seperti gula aren, pisang busuk, atau tapai singkong. Campuran ini didiamkan selama beberapa hari hingga bakteri mengonsumsi gula dan mereduksi indigo kembali ke bentuk larut yang disebut 'leuco-indigo'. Indikator bahwa tong pewarna telah 'hidup' dan siap digunakan adalah munculnya cairan berwarna kuning kehijauan dengan lapisan busa biru metalik (disebut 'gondang') yang tebal di permukaannya."
+          "section_title": "Solusi Ekonomi Sirkular dan Sustainable Fashion",
+          "text": "MAKE BATIK hadir sebagai solusi melalui penerapan ekonomi sirkular, yaitu mengubah limbah kertas semen dan plastik menjadi produk milineris bernilai tinggi seperti tas, dompet, dan obi belt [7-9]. Proses upcycle ini tidak hanya mengurangi volume limbah yang berakhir di TPA, tetapi juga menciptakan produk fashion yang memiliki 'story value' atau nilai cerita keberlanjutan bagi konsumen [5, 6]. Dengan memadukan teknik batik tradisional pada media alternatif, produk yang dihasilkan tetap mempertahankan nilai budaya lokal sekaligus menjaga kelestarian bumi [10-12]."
         },
         {
-          "section_title": "Fase 4: Proses Pencelupan dan Oksidasi Udara",
-          "text": "Saat kain (seperti katun atau sutra) dicelupkan ke dalam tong, kain tersebut tidak langsung berwarna biru, melainkan kuning kehijauan karena menyerap cairan 'leuco-indigo'. Keajaiban sejati terjadi ketika kain diangkat dari tong dan terpapar oksigen di udara bebas. Melalui proses oksidasi spontan, cairan kuning kehijauan pada serat kain perlahan-lahan berubah menjadi biru cerah di depan mata. Untuk mendapatkan warna biru yang pekat, mendalam, dan tidak mudah luntur (enduring blues), proses pencelupan dan pengeringan ini harus diulang berkali-kali—bisa mencapai 10 hingga 30 kali pencelupan tergantung pada tingkat kegelapan warna yang diinginkan. Setiap lapisan warna memperkuat ikatan molekul indigo di dalam pori-pori kain, menciptakan mahakarya tekstil dengan gradasi warna alami yang menawan."
+          "section_title": "Inovasi Bioadsorben untuk Limbah Cair",
+          "text": "Selain pengolahan limbah padat, terdapat inovasi ramah lingkungan dalam proses produksi melalui pemanfaatan kulit jeruk sebagai bioadsorben [13, 14]. Kandungan pektin dalam kulit jeruk memiliki kemampuan alami untuk mengikat zat warna dan polutan dalam air limbah batik [13]. Teknologi ini memungkinkan sisa pembuangan proses pewarnaan menjadi lebih aman bagi lingkungan, selaras dengan prinsip sustainability berbasis riset [14, 15]."
+        },
+        {
+          "section_title": "Kontribusi Nyata Terhadap SDG",
+          "text": "Upaya pengelolaan limbah ini berkontribusi langsung pada beberapa Tujuan Pembangunan Berkelanjutan (SDGs), di antaranya SDG 12 (Konsumsi dan Produksi yang Bertanggung Jawab) melalui pengurangan limbah konstruksi dan plastik [16]. Selain itu, inisiatif ini mendukung SDG 13 (Penanganan Perubahan Iklim) melalui mitigasi emisi limbah serta SDG 15 (Ekosistem Daratan) dengan menjaga kualitas tanah dari akumulasi sampah anorganik [16-18]."
         }
       ]
     },
     {
-      "id": "how-to-care-for-silk-batik",
-      "slug": "how-to-care-for-silk-batik-preservation-guide",
-      "title": "How to Care for Silk Batik",
+      "id": "how-to-care-for-recycled-material-batik",
+      "slug": "how-to-care-for-recycled-material-batik-preservation-guide",
+      "title": "Cara Merawat Batik Material Daur Ulang",
       "category": "Care Guide",
-      "reading_time": "8 Min Read",
-      "excerpt": "Essential preservation techniques to maintain the vibrancy and structural integrity of your delicate silk pieces.",
-      "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuDJvMx40I7tlUdtDJ4t7zC1wQoLPRr0X_V3ybOMpqlcvybLFmes15OynZapYwChDggPeCRsixOhyaWGcGiCF5FneptjwKKhainmZoukFAj5IV4OIJ6y_YVYxTKbyih0Dof3PGsnrbEOC66VD1U6Cl6AAcU4pFJx9DKjH41Xe5TZ15HuoZE4D5tpmg0aq3Ont6tPcBWI1-nZz70KPIx2_tEBCQ0M-684H2KivS_JRLaazFGV1C8hQ3-ld5oBbISb7mQPiaQx5A0CfCGv",
+      "reading_time": "5 Min Read",
+      "excerpt": "Temukan panduan praktis merawat koleksi MAKE BATIK Anda. Produk inovatif dari limbah kertas semen dan plastik ini telah teruji tahan air, tahan panas, dan aman dicuci secara manual sehingga tetap awet untuk penggunaan jangka panjang.",
+      "image": "/images/clutch.jpg",
       "content": [
         {
-          "section_title": "Pendahuluan: Menjaga Investasi Seni Anda",
-          "text": "Batik sutra bukan sekadar pakaian biasa; ia adalah perpaduan antara serat protein alami yang mewah dan mahakarya seni bernilai tinggi. Karakteristik sutra yang lembut dan rentan, berpadu dengan pigmen pewarna batik (baik alami maupun sintetis), membutuhkan metode perawatan yang sangat spesifik. Kesalahan dalam mencuci atau menyimpan dapat menyebabkan serat kain menjadi rapuh, warna memudar, atau motif batik yang indah menjadi luntur. Panduan ini merangkum teknik preservasi esensial untuk menjaga kilau alami dan integritas struktural koleksi batik sutra Anda."
+          "section_title": "Makna Budaya dalam Motif Sekar Jagad",
+          "text": "Setiap produk MAKE BATIK mengangkat motif batik khas Yogyakarta, yaitu Sekar Jagad, sebagai identitas utama desainnya [1]. Penggunaan motif ini bukan sekadar estetika, melainkan upaya penguatan identitas budaya lokal, sejalan dengan status Yogyakarta sebagai Kota Batik Dunia yang diakui UNESCO [2, 3]. Perpaduan antara motif tradisional dengan material alternatif memberikan karakter unik yang membedakan produk kami dari fashion konvensional [4]."
         },
         {
-          "section_title": "Teknik Pencucian: Hindari Detergen, Gunakan Lerak",
-          "text": "Aturan utama dalam merawat batik sutra adalah jangan pernah menggunakan detergen pakaian biasa. Detergen modern mengandung enzim pencuci yang keras dan bahan pemutih (optical brighteners) yang dapat merusak protein serat sutra serta memudarkan pigmen warna batik dengan cepat. Gunakanlah cairan lerak alami (Sapindus rarak) atau sabun bayi berbahan sangat lembut (mild baby shampoo). Lerak mengandung saponin alami yang mampu mengangkat kotoran tanpa mengikis warna kain. Proses mencuci wajib dilakukan secara manual dengan tangan (hand wash). Cukup celupkan kain berkali-kali dan remas dengan sangat lembut; hindari mengucek terlalu keras, memeras dengan cara dipelintir, atau menggunakan mesin cuci karena gesekan mekanis dapat merusak jalinan benang sutra yang halus."
+          "section_title": "Variasi Produk: Koleksi Milineris Berkelanjutan",
+          "text": "Kami menghadirkan berbagai variasi produk fashion fungsional yang terbagi dalam beberapa seri. Koleksi utama meliputi Clutch yang praktis untuk acara formal, Shoulder Bag yang stylish untuk aktivitas harian, serta Obi Belt yang dirancang lebar untuk mempertegas siluet tubuh [4-6]. Selain itu, terdapat variasi produk lain seperti dompet dan hand bag yang memadukan tekstur halus kulit dengan kekokohan tenun plastik dan kertas semen [7, 8]."
         },
         {
-          "section_title": "Proses Pengeringan: Jauhkan dari Sinar Matahari Langsung",
-          "text": "Sinar matahari langsung adalah musuh terbesar bagi warna batik alami dan serat sutra. Radiasi ultraviolet (UV) dapat memicu reaksi foto-oksidasi yang memutus ikatan pigmen warna dan membuat kain sutra menjadi kering, menguning, serta rapuh. Setelah dibilas dengan bersih, jangan memeras batik sutra. Bentangkan batik di atas handuk kering, gulung perlahan untuk menyerap sisa air, lalu jemur dengan cara diangin-anginkan di tempat yang teduh, beratap, dan memiliki sirkulasi udara yang baik. Biarkan kain mengering secara alami oleh embusan angin."
+          "section_title": "Inovasi Desain: Produk Transformable",
+          "text": "Salah satu keunggulan unik kami adalah pengembangan produk transformable pada seri terbaru. Contohnya adalah 'Hat Bucket' inovatif yang menggunakan konstruksi lipat fleksibel sehingga dapat diubah menjadi 'Sling Bag' dalam hitungan detik [9, 10]. Desain hibrida ini menggabungkan dua kategori fashion berbeda, menawarkan fleksibilitas dan fungsi ganda bagi pengguna yang dinamis [10, 11]."
         },
         {
-          "section_title": "Teknik Menyetrika yang Aman",
-          "text": "Sutra sangat sensitif terhadap panas tinggi yang dapat menghanguskan serat proteinnya. Saat menyetrika batik sutra, atur suhu setrika pada posisi terendah atau mode khusus 'Silk'. Ada dua metode aman yang disarankan: pertama, setrikalah kain dari bagian dalam (sisi belakang motif). Kedua, jika harus menyetrika bagian luar, letakkan selembar kain katun putih tipis di atas batik sutra sebagai pelindung (pressing cloth). Hal ini mencegah kontak langsung plat besi setrika dengan permukaan batik, menghindari efek kilap berlebih yang merusak estetika kain, serta melindungi detail malam (lilin) batik yang mungkin masih tersisa di serat kain."
+          "section_title": "Panduan Perawatan (Product Care)",
+          "text": "Meskipun berbahan dasar kertas semen dan plastik, produk kami telah melalui uji ketahanan yang ketat untuk penggunaan sehari-hari. Produk bersifat tahan air (water resistant) dan aman digunakan di luar ruangan karena materialnya tidak larut atau rusak meski terendam air [12, 13]. Untuk perawatan, produk aman dicuci secara manual menggunakan tangan dengan deterjen ringan; hasil uji menunjukkan warna tetap stabil, serat utuh, dan jahitan tidak rusak setelah pencucian [12, 14]. Material ini juga memiliki ketahanan panas yang baik, di mana struktur dan warnanya tetap stabil meski terpapar suhu tinggi [12, 15]."
         },
         {
-          "section_title": "Penyimpanan Jangka Panjang: Bebas Kimia dan Jamur",
-          "text": "Hindari menyimpan batik sutra di dalam kantong plastik tertutup karena dapat menjebak kelembapan udara dan memicu pertumbuhan jamur. Bungkuslah kain menggunakan kain katun bersih yang bersirkulasi udara atau kertas bebas asam (acid-free paper). Saat diletakkan di dalam lemari, jangan gunakan kapur barus (kamper) konvensional. Zat kimia pada kamper dapat menguap dan bereaksi negatif dengan pewarna batik serta merusak kelembutan sutra. Sebagai gantinya, gunakan penolak serangga alami seperti merica butiran, cengkih, atau potongan kayu cendana yang dibungkus kain kasa. Rempah-rempah alami ini efektif mengusir ngengat tanpa merusak keindahan abadi batik sutra Anda."
-        }
-      ]
-    },
-    {
-      "id": "the-origins-of-parang-motif",
-      "slug": "the-origins-of-parang-motif-history-and-philosophy",
-      "title": "The Origins of Parang Motif",
-      "category": "History",
-      "reading_time": "10 Min Read",
-      "excerpt": "Tracing the royal lineage and philosophical meaning behind one of Indonesia's most iconic and powerful patterns.",
-      "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuAkzRNxnR9xiVJC_Mysaz6Bk3gtpcD3hhQbIXPeuSv96GfFU7xYPUEpKpCSd0NXmb8slgiFq49iU0T82pPVLSCTqqaIXftoiA0_zbGGi2EKp1Bj2makRdNub9Z2ib0LQw7Z7DDsrBBLyxgTTsTGMJMlRzLG42kY2czzNcy_4Z4rd2wnngYdBF5DPqGH1xTqtDSaaB6M7Dy7rn3XvHZv9d9X93r4fMcsM6LXlV_Xpo1MCYBJ9OewgbT-K3BsPR2flKmTUcctAmAbhhnt",
-      "content": [
-        {
-          "section_title": "Pendahuluan: Motif Tertua dan Penuh Kekuasaan",
-          "text": "Di antara ratusan motif batik yang tersebar di Nusantara, motif Parang menempati posisi yang sangat sakral dan legendaris. Sebagai salah satu motif batik tertua, Parang bukan sekadar hiasan visual pada selembar kain, melainkan simbol kedaulatan, kekuatan spiritual, dan pedoman hidup bagi masyarakat Jawa. Memahami motif Parang berarti menyelami sejarah kerajaan Jawa kuno dan mencermati bagaimana filosofi luhur diintegrasikan ke dalam goresan malam di atas kain mori."
-        },
-        {
-          "section_title": "Asal-usul Sejarah: Meditasi Sultan Agung",
-          "text": "Berdasarkan catatan sejarah dan babad tanah Jawa, penciptaan motif Parang erat kaitannya dengan masa kejayaan Kerajaan Mataram Islam. Penciptaannya secara historis diatribusikan kepada Sultan Agung Hanyokrokusumo (1613–1645), salah satu raja Mataram terbesar. Alkisah, saat sang Sultan melakukan meditasi dan laku spiritual di kawasan pantai selatan Jawa yang terjal—pantai yang dipenuhi tebing batu karang (disebut pereng/parang)—beliau terkesima melihat deburan ombak laut selatan yang tiada henti menghantam dinding karang purba tersebut. Gerakan ombak yang dinamis, kuat, dan konsisten inilah yang menginspirasi Sultan Agung untuk menggambar pola garis diagonal bergelombang yang kemudian kita kenal sebagai Batik Parang."
-        },
-        {
-          "section_title": "Struktur Geometris dan Makna Filosofis",
-          "text": "Secara visual, motif Parang tersusun atas garis-garis diagonal dengan sudut kemiringan sekitar 45 derajat yang membentuk jalinan huruf 'S' yang saling berkesinambungan tanpa putus. Struktur ini memiliki elemen-elemen penting: garis lengkung 'S' melambangkan ombak samudera yang merepresentasikan semangat yang tidak pernah padam, kontinuitas perjuangan, serta energi kehidupan yang dinamis. Di antara jalinan gelombang tersebut, biasanya terdapat motif hiasan kecil berbentuk belah ketupat yang disebut 'Mlinjon', melambangkan keseimbangan kosmologis dan fondasi spiritual manusia. Kemiringan diagonal pola Parang melambangkan ketangkasan, kewibawaan, kedinamisan, serta keteguhan dalam memegang prinsip kebenaran."
-        },
-        {
-          "section_title": "Status Sebagai 'Batik Larangan'",
-          "text": "Pada masa pemerintahan kesultanan Yogyakarta dan Surakarta, motif Parang dikategorikan sebagai 'Batik Larangan' (Awisan Dalem). Artinya, tidak sembarang orang boleh mengenakan motif ini dalam aktivitas sehari-hari. Aturan adat yang ketat menetapkan bahwa motif Parang—terutama dengan ukuran bidang yang besar—hanya boleh dipakai oleh raja, permaisuri, putra mahkota, dan kerabat dekat kerajaan di dalam lingkungan keraton. Larangan ini didasarkan pada kepercayaan bahwa motif Parang memancarkan energi kekuasaan (power) dan kepemimpinan yang begitu besar, sehingga harus diselaraskan dengan kedudukan spiritual dan sosial pemakainya agar tidak menimbulkan ketidakseimbangan kosmis."
-        },
-        {
-          "section_title": "Tipologi dan Varian Motif Parang",
-          "text": "Motif Parang berkembang menjadi beberapa variasi yang masing-masing memiliki peruntukan dan makna sosiologis tersendiri. 'Parang Barong' adalah varian dengan ukuran paling besar (lebar bidang gelombang di atas 8 cm); varian ini hanya boleh dikenakan oleh Raja sebagai lambang kekuasaan tertinggi, tanggung jawab besar, dan kematangan jiwa seorang pemimpin. 'Parang Rusak' adalah varian yang sangat sakral, melambangkan perjuangan internal manusia melawan hawa nafsu dan sisi gila dirinya sendiri demi mencapai kesucian batin. Sementara itu, 'Parang Klitik' memiliki ukuran pola yang jauh lebih kecil dan halus, melambangkan kelembutan, keanggunan, serta kebijaksanaan, yang secara tradisional kerap dikenakan oleh para putri keraton."
+          "section_title": "Kekuatan dan Ketahanan Material",
+          "text": "Produk MAKE BATIK dirancang untuk penggunaan aktif jangka panjang. Melalui teknik laminasi alami dan pengembangan material komposit, produk kami terbukti kuat terhadap tarikan dan lipatan berulang tanpa risiko robek [13, 16]. Karakteristik bahan yang ringan namun kokoh memastikan kenyamanan maksimal tanpa mengurangi aspek keamanan barang bawaan Anda [17]."
         }
       ]
     }
+    
   ]
 }

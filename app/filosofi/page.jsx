@@ -10,7 +10,7 @@ const PILLARS = [
     icon: "🎨",
     title: "Inovasi Berakar Budaya",
     desc: "Kami menjaga napas tradisi batik agar tetap hidup dalam keseharian masyarakat modern melalui produk milineris yang trendi, fungsional, dan relevan dengan perkembangan zaman.",
-    image: "/images/inovasi-budaya.png",
+    image: "/images/inovasi-budaya.jpg",
   },
   {
     icon: "🌿",
@@ -59,7 +59,7 @@ export default function FilosofiPage() {
           <img
             alt="Make Batik Philosophy - Heritage and Sustainability"
             className="w-full h-full object-cover"
-            src="/images/filosofi-hero.png"
+            src="/images/filosofi-hero.jpg"
           />
         </div>
       </section>
@@ -89,7 +89,7 @@ export default function FilosofiPage() {
               key={idx}
               className="border border-primary bg-surface flex flex-col overflow-hidden hover:shadow-lg transition-shadow duration-300"
             >
-              <div className="aspect-[4/3] bg-surface-container-low overflow-hidden border-b border-primary">
+              <div className="aspect-[6/9] bg-surface-container-low overflow-hidden border-b border-primary">
                 <img
                   src={pillar.image}
                   alt={pillar.title}

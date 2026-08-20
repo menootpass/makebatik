@@ -108,8 +108,8 @@ export default function HomePage() {
           >
             <img
               alt="Koleksi MAKE BATIK"
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwKshLRV3omZlOb75YbP6WexylRvFmGCjafr5A2O8-hpmlz8-LaSKP7I_MzaYkWdyKqzr2ni-ByWTC1IMFkYzVpflBlTr3sudWgtxMcem3fQoi2mk2-xmm4n5NOh2BGWoU9q5Qidb1ea-CPKhYr_YPfM7w9AI6V4DrlTn4HmVlxhm3EPTTA9dqRJACafX4d190p97olaa05Hkz_ztUMQP1vNSFe_O4uNueKUMuzDGhag9jwuAxTayhEGQqt0OCVuHI49VGPGWtmrJc"
+              className="w-full h-full object-cover object-[center_80%] transition-transform duration-700 group-hover:scale-105"
+              src="/images/produk.jpg"
             />
             <div className="absolute inset-0 bg-primary/10 group-hover:bg-transparent transition-colors duration-500" />
             <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-primary/80 to-transparent text-on-primary">
@@ -126,7 +126,7 @@ export default function HomePage() {
             <img
               alt="Proses Pembuatan Batik"
               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuCC23Fy9mPRCbbHgyMVmlWgRb3kEt9jSKePzaicFSE0FV9dILan-m4vmttbPClPPIy4Hf5dJ_QCy0NKnJInor80e5KU-TlyyjK1Ct4rsQDuAAaclkrds7d09VCdPWhmzk6lTCutJZTeE45FGZzE9j8KnMZwN9Z6QKymLUvd9uFvpdShqgphO9sqbZTvKkov3I9xdJxPCHnosxXEr8KMLKIkCXRZ9T39sQKGNY0iOK3_4AA_JUnrZULZXELcVD1TJOxHWAxZHafet3G_"
+              src="/images/produk2.jpg"
             />
             <div className="absolute inset-0 bg-primary/10 group-hover:bg-transparent transition-colors duration-500" />
             <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-primary/80 to-transparent text-on-primary">
@@ -158,7 +158,7 @@ export default function HomePage() {
             <img
               alt="Produk Daur Ulang MAKE BATIK"
               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0oPUqWOqfv9Tld6yd12RRVUQdgJDgpPm3o64Cooz1pjOjRnW5iddw9uNHTl3qav28c3NPOg1CaNDI65V_XyMCsBbAM-hmuQ_G5CNVWSxlhenSKYLhPwW2DVurd-mGHSMqehu-LtobEp7pdpbyQ_lBfWQWxOH_ejDt7eDeFoK7d1OQAhfqjy6Jgz4McsjsRSXMcghmeQgfusZbfug304hAaVyRfkFtsi7Vx3VdRQ2RPuvAtRh0BlIqAPWgodmjsjhpTe-373t9HfVe"
+              src="/images/produk3.jpg"
             />
             <div className="absolute inset-0 bg-primary/10 group-hover:bg-transparent transition-colors duration-500" />
             <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-primary/80 to-transparent text-on-primary">
